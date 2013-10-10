@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ingresosYGastos</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_nuevo_usuario">Nuevo_usuario</string>
+    <string name="title_activity_usuario_datos_">UsuarioDatos_Activity</string>
+    <string name="title_activity_opciones">Opciones</string>
+    <string name="title_activity_tablayout">TablayoutActivity</string>
+    <string name="title_activity_collection_demo">CollectionDemoActivity</string>
+    <string name="seleccione_usuario">Seleccione usuario</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="agregar">botonAgregar</string>
+    <string name="TituloAp">Insos</string>
+    <string name="botonAgregar">Agregar usuario</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="nombre">Nombre</string>
+    <string name="edad">edad</string>
+    <string name="numero">numero</string>
+    <string name="fechaNacimiento">fecha de nacimiento</string>
+    <string name="fecha_de_nacimiento">Fecha de nacimiento</string>
+    
+    
+    
+    
+
+</resources>
