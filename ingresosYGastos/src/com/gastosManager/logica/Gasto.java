@@ -1,14 +1,16 @@
 package com.gastosManager.logica;
 
+import java.sql.Date;
+
 import android.widget.DatePicker;
 
 public class Gasto {
 
 	private int gasto;
-	private DatePicker fecha;
+	private Date fecha;
 	private String lugar;
 
-	public Gasto(int ingreso, DatePicker fecha, String lugar) {
+	public Gasto(int ingreso, Date fecha, String lugar) {
 		this.gasto = ingreso;
 		this.fecha = fecha;
 		this.lugar = lugar;
@@ -22,11 +24,11 @@ public class Gasto {
 		this.gasto = ingreso;
 	}
 
-	public DatePicker darFecha() {
+	public Date darFecha() {
 		return fecha;
 	}
 
-	public void CambiarFecha(DatePicker fecha) {
+	public void CambiarFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 

@@ -13,8 +13,8 @@ public class UsersDataSource {
 
 	private SQLiteDatabase database;
 	private MySQLiteHelper dbHelper;
-	private String[] allColumns = { MySQLiteHelper.COLUMN_ID,
-			MySQLiteHelper.COLUMN_NOMBRE, MySQLiteHelper.COLUMN_GASTO };
+	private String[] allColumns_tableUsers = { MySQLiteHelper.USUARIO_ID,
+			MySQLiteHelper.USUARIO_NOMBRE };
 
 	public UsersDataSource(Context context) {
 		dbHelper = new MySQLiteHelper(context);
@@ -33,14 +33,27 @@ public class UsersDataSource {
 		values.put(MySQLiteHelper.COLUMN_NOMBRE, nombre);
 		long insertId = database.insert(MySQLiteHelper.TABLE_USERS, null,
 				values);
-		Cursor cursor = database.query(MySQLiteHelper.TABLE_USERS, allColumns,
-				MySQLiteHelper.COLUMN_ID + " = " + insertId, null, null, null,
+		Cursor cursor = database.query(MySQLiteHelper.TABLE_USERS, allColumns_tableUsers,
+				MySQLiteHelper.USUARIO_ID + " = " + insertId, null, null, null,
 				null);
 		cursor.moveToFirst();
 		Usuario newUsuario = cursorToUsuario(cursor);
 		cursor.close();
 		return newUsuario;
 
+	}
+	
+	/**
+	 * Basado en el ID del usuario actual es donde se agregara, la
+	 * nueva informacion para la base de datos.
+	 * @param usuario
+	 */
+	public void agregarNuevoGastoIngreso(Usuario usuario)
+	{
+		ContentValues values = new ContentValues();
+		long userKey = usuario.getId();
+		//values.put(MySQLiteHelper.COLUMN_GASTO, value)
+		
 	}
 
 	public void borrarUsuario(Usuario usuario) {
@@ -53,7 +66,7 @@ public class UsersDataSource {
 
 	public List<Usuario> darTodosLosUsuario() {
 		List<Usuario> usuarios = new ArrayList<Usuario>();
-		Cursor cursor = database.query(MySQLiteHelper.TABLE_USERS, allColumns,
+		Cursor cursor = database.query(MySQLiteHelper.TABLE_USERS, allColumns_tableUsers,
 				null, null, null, null, null);
 
 		cursor.moveToFirst();

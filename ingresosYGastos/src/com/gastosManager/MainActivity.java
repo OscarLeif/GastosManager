@@ -16,7 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.gastosManager.TablayoutActivity;
-import com.example.gastosManagerApp.R;
+import com.example.ingresosygastos.R;
 
 public class MainActivity extends Activity {
 	private UsersDataSource datasource;
@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
 		datasource = new UsersDataSource(this);
 		datasource.open();
 		
-		ListView lista = (ListView) findViewById(R.id.listView1);
+		final ListView lista = (ListView) findViewById(R.id.listView1);
 		// use the SimpleCursorAdapter to show the
 		// elements in a ListView
 		List<Usuario> values = datasource.darTodosLosUsuario();
@@ -68,6 +68,31 @@ public class MainActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+	/**
+	 * Metodo para agregar subMneu a un objeto de la lista.
+	 * Por otro lado, no funciona.
+	 * @param item
+	 * @return
+	 */
+	public boolean crearMenuLista(Menu item)
+	{
+		switch (((MenuItem) item).getItemId()) {
+		case R.id.borrarActual:
+			
+			datasource.open();
+			ListView lista = (ListView) findViewById(R.id.listView1);
+			// use the SimpleCursorAdapter to show the
+			// elements in a ListView
+		    List<Usuario> values = datasource.darTodosLosUsuario();
+			Usuario usuario = values.get(posicionListView);
+			datasource.borrarUsuario(usuario);
+			break;
+
+		default:
+			break;
+		}
+		return false;
 	}
 
 	@Override
@@ -122,8 +147,13 @@ public class MainActivity extends Activity {
 						String numero = Integer.toString(position);
 						Log.d("Pulsado item numero: ", numero);
 						posicionListView = position;
+						
 					}
 				});
 	}
+	
+	
+	
+	
 
 }

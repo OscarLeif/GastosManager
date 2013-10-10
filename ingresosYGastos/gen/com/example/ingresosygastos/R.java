@@ -65,12 +65,13 @@ public final class R {
     public static final class menu {
         public static final int collection_demo=0x7f070000;
         public static final int context_menu=0x7f070001;
-        public static final int main=0x7f070002;
-        public static final int nuevo_usuario=0x7f070003;
-        public static final int opciones=0x7f070004;
-        public static final int register=0x7f070005;
-        public static final int tablayout=0x7f070006;
-        public static final int usuario_datos_=0x7f070007;
+        public static final int list_view_menu=0x7f070002;
+        public static final int main=0x7f070003;
+        public static final int nuevo_usuario=0x7f070004;
+        public static final int opciones=0x7f070005;
+        public static final int register=0x7f070006;
+        public static final int tablayout=0x7f070007;
+        public static final int usuario_datos_=0x7f070008;
     }
     public static final class string {
         public static final int TituloAp=0x7f05000c;

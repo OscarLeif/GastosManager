@@ -1,10 +1,10 @@
 package com.example.gastosManager;
 
-import com.example.gastosManagerApp.R;
-
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
+
+import com.example.ingresosygastos.R;
 
 public class CollectionDemoActivity extends Activity {
 
