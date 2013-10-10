@@ -14,7 +14,7 @@ public class UsersDataSource {
 	private SQLiteDatabase database;
 	private MySQLiteHelper dbHelper;
 	private String[] allColumns = { MySQLiteHelper.COLUMN_ID,
-			MySQLiteHelper.COLUMN_NOMBRE };
+			MySQLiteHelper.COLUMN_NOMBRE, MySQLiteHelper.COLUMN_GASTO };
 
 	public UsersDataSource(Context context) {
 		dbHelper = new MySQLiteHelper(context);

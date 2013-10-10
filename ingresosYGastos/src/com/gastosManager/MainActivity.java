@@ -16,7 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.gastosManager.TablayoutActivity;
-import com.example.ingresosygastos.R;
+import com.example.gastosManagerApp.R;
 
 public class MainActivity extends Activity {
 	private UsersDataSource datasource;
@@ -27,16 +27,17 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		//datasource = new UsersDataSource(this);
-		//datasource.open();
-		//ListView lista = (ListView) findViewById(R.id.listView1);
+		datasource = new UsersDataSource(this);
+		datasource.open();
+		
+		ListView lista = (ListView) findViewById(R.id.listView1);
 		// use the SimpleCursorAdapter to show the
 		// elements in a ListView
-		//List<Usuario> values = datasource.darTodosLosUsuario();
-		//ArrayAdapter<Usuario> adapter = new ArrayAdapter<Usuario>(this,
-				//android.R.layout.simple_list_item_1, values);
-		///lista.setAdapter(adapter);
-		///indiceLista();
+		List<Usuario> values = datasource.darTodosLosUsuario();
+		ArrayAdapter<Usuario> adapter = new ArrayAdapter<Usuario>(this,
+		android.R.layout.simple_list_item_1, values);
+		lista.setAdapter(adapter);
+		indiceLista();
 
 	}
 
@@ -44,14 +45,14 @@ public class MainActivity extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		//datasource.open();
-		//ListView lista = (ListView) findViewById(R.id.listView1);
+		datasource.open();
+		ListView lista = (ListView) findViewById(R.id.listView1);
 		// use the SimpleCursorAdapter to show the
 		// elements in a ListView
-		//List<Usuario> values = datasource.darTodosLosUsuario();
-		//ArrayAdapter<Usuario> adapter = new ArrayAdapter<Usuario>(this,
-				//android.R.layout.simple_list_item_1, values);
-		//lista.setAdapter(adapter);
+	    List<Usuario> values = datasource.darTodosLosUsuario();
+		ArrayAdapter<Usuario> adapter = new ArrayAdapter<Usuario>(this,
+		android.R.layout.simple_list_item_1, values);
+		lista.setAdapter(adapter);
 
 	}
 
@@ -61,16 +62,6 @@ public class MainActivity extends Activity {
 		super.onSaveInstanceState(outState);
 	}
 
-	public void agregarLista() {
-		ListView lista = (ListView) findViewById(R.id.listView1);
-
-		// ArrayList<Usuario> actividad =
-		// ModelContainer.actividad.ListaUsuarios();
-		// ArrayAdapter<Usuario> adaptador = new
-		// ArrayAdapter<Usuario>(this,android.R.layout.simple_list_item_1,actividad);
-		// lista.setAdapter(adaptador);
-
-	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

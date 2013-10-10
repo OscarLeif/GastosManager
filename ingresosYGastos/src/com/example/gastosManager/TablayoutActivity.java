@@ -1,6 +1,6 @@
 package com.example.gastosManager;
 
-import com.example.ingresosygastos.R;
+import com.example.gastosManagerApp.R;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class TablayoutActivity extends FragmentActivity implements
 		ActionBar.TabListener {
 	private int position;

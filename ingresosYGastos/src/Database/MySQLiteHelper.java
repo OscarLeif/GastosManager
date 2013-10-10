@@ -15,16 +15,15 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	private static final int DATABASE_VERSION = 1;
 	private static final String DATABASE_CREATE = "create table " + TABLE_USERS
 			+ "(" + COLUMN_ID + " integer primary key autoincrement, "
-			+ COLUMN_NOMBRE + " text not null)" + COLUMN_GASTO
-			+ " integer not null);";
+			+ COLUMN_NOMBRE + " text not null, "+COLUMN_GASTO + " integer);";
 
 	public MySQLiteHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 
 	@Override
-	public void onCreate(SQLiteDatabase database) {
-		// TODO Auto-generated method stub
+	public void onCreate(SQLiteDatabase database) 
+	{
 		database.execSQL(DATABASE_CREATE);
 	}
 

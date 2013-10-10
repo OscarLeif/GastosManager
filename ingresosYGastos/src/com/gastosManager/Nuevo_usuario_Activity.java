@@ -13,7 +13,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.ingresosygastos.R;
+import com.example.gastosManagerApp.R;
 
 public class Nuevo_usuario_Activity extends Activity {
 	private UsersDataSource datasource;
@@ -56,6 +56,11 @@ public class Nuevo_usuario_Activity extends Activity {
 			}
 		});
 		Log.d("Do Something !!", "");
+	}
+	
+	public void botonAceptar(View v)
+	{
+	
 	}
 
 	@Override
