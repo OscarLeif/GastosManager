@@ -1,4 +1,6 @@
-package com.example.ingresosygastos;
+package com.example.gastosManager;
+
+import com.example.ingresosygastos.R;
 
 import android.os.Bundle;
 import android.app.Activity;

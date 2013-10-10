@@ -15,7 +15,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.ingresosygastos.MainActivity"
+            android:name="com.gastosManager.MainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
             <intent-filter>
@@ -25,32 +25,32 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ingresosygastos.Nuevo_usuario_Activity"
+            android:name="com.gastosManager.Nuevo_usuario_Activity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_nuevo_usuario" >
         </activity>
         <activity
-            android:name="com.ingresosygastos.UsuarioDatos_Activity"
+            android:name="com.gastosManager.UsuarioDatos_Activity"
             android:label="@string/title_activity_usuario_datos_" >
         </activity>
         <activity
-            android:name="com.ingresosygastos.UsuarioDatos_Activity"
+            android:name="com.gastosManager.UsuarioDatos_Activity"
             android:label="@string/title_activity_usuario_datos_" >
         </activity>
         <activity
-            android:name="com.example.ingresosygastos.Opciones"
+            android:name="com.example.gastosManager.Opciones"
             android:label="@string/title_activity_opciones" >
         </activity>
         <activity
-            android:name="com.example.ingresosygastos.TablayoutActivity"
+            android:name="com.example.gastosManager.TablayoutActivity"
             android:label="@string/title_activity_tablayout" >
         </activity>
         <activity
-            android:name="com.example.ingresosygastos.CollectionDemoActivity"
+            android:name="com.example.gastosManager.CollectionDemoActivity"
             android:label="@string/title_activity_collection_demo" >
         </activity>
         <activity
-            android:name="com.ingresosygastos.RegisterActivity"
+            android:name="com.gastosManager.RegisterActivity"
             android:label="@string/title_activity_register" >
         </activity>
     </application>

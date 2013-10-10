@@ -1,4 +1,4 @@
-package com.ingresosygastos;
+package com.gastosManager;
 
 import Database.UsersDataSource;
 import android.app.Activity;
@@ -15,7 +15,7 @@ import android.widget.EditText;
 
 import com.example.ingresosygastos.R;
 
-public class Nuevo_usuario_Activity extends Activity{
+public class Nuevo_usuario_Activity extends Activity {
 	private UsersDataSource datasource;
 
 	@Override
@@ -24,9 +24,9 @@ public class Nuevo_usuario_Activity extends Activity{
 		setContentView(R.layout.nuevo_usuario);
 		datasource = new UsersDataSource(this);
 		// Creacion del boton, cancelar
-		Button botonCancelar = (Button)findViewById(R.id.botonCancelar);
+		Button botonCancelar = (Button) findViewById(R.id.botonCancelar);
 		botonCancelar.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
@@ -34,32 +34,29 @@ public class Nuevo_usuario_Activity extends Activity{
 			}
 		});
 		// Creacion de boton Aceptar.
-		Button botonAceptar = (Button)findViewById(R.id.buttonOK);
+		Button botonAceptar = (Button) findViewById(R.id.buttonOK);
 		botonAceptar.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Log.d("Do:", " Something amazing");
-				//Aqui debe haber validacion de datos.
-				EditText edt=(EditText)findViewById(R.id.editText1);
-				String nombre=edt.getText().toString();
+				// Aqui debe haber validacion de datos.
+				EditText edt = (EditText) findViewById(R.id.editText1);
+				String nombre = edt.getText().toString();
 				datasource.open();
 				datasource.agregarUsuario(nombre);
 				datasource.close();
 
 				finish();
-				
+
 				/**
 				 * 
 				 */
 			}
 		});
-		Log.d("Do Something !!","");
+		Log.d("Do Something !!", "");
 	}
-	
-
-	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -68,18 +65,14 @@ public class Nuevo_usuario_Activity extends Activity{
 		return true;
 	}
 
-	
-	public void cancelar(View v)
-	{
-		Log.d("Do something very interesting","..Bla bla");
+	public void cancelar(View v) {
+		Log.d("Do something very interesting", "..Bla bla");
 		System.out.println("Here buddy now I'm working :D");
 		finish();
 	}
-	
-	public void botonExtra(View v)
-	{
-		Log.d("Boton extra"," Activado");
+
+	public void botonExtra(View v) {
+		Log.d("Boton extra", " Activado");
 	}
-	
 
 }
