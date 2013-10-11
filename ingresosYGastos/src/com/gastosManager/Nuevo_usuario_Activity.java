@@ -10,7 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.ingresosygastos.R;
+import com.example.gastosManager.R;
 
 public class Nuevo_usuario_Activity extends Activity {
 	private UsersDataSource datasource;

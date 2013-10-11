@@ -34,11 +34,7 @@ public class AppSectionsPagerAdapter extends FragmentPagerAdapter {
 			// Al retornar este fragmento creara el contenido para ubicarlo
 			// dentro
 			// de la tab.
-			return new LaunchpadSectionFragment();// Esta clase hereda de
-													// Fragment
-
-		case 1:
-			return new LaunchpadSectionFragment();
+			return new GastosSectionFragment();// Esta clase hereda de Fragment.
 
 		default:
 			// The other sections of the app are dummy placeholders.

@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.example.ingresosygastos;
+package com.example.gastosManager;
 
 public final class R {
     public static final class attr {
@@ -28,10 +28,10 @@ public final class R {
         public static final int FechaNacimiento=0x7f080006;
         public static final int action_settings=0x7f080015;
         public static final int borrarActual=0x7f080019;
-        public static final int botonAgregar=0x7f08000f;
+        public static final int botonAgregar=0x7f080011;
         public static final int botonAgregarUsuario=0x7f080007;
-        public static final int botonCancelar=0x7f080013;
-        public static final int botonExtra=0x7f080014;
+        public static final int botonCancelar=0x7f080014;
+        public static final int botonExtra=0x7f080013;
         public static final int botonFechaNacimiento=0x7f080005;
         public static final int button1=0x7f08000c;
         public static final int button2=0x7f08000d;
@@ -45,11 +45,11 @@ public final class R {
         public static final int editText1=0x7f080012;
         public static final int item1=0x7f080016;
         public static final int item2=0x7f080017;
-        public static final int listView1=0x7f080011;
+        public static final int listView1=0x7f08000e;
         public static final int menuAgregar=0x7f080018;
         public static final int pager=0x7f080009;
         public static final int textView2=0x7f080001;
-        public static final int textViewTituloAp=0x7f08000e;
+        public static final int textViewTituloAp=0x7f08000f;
         public static final int txtSeleccioneUsuario=0x7f080000;
     }
     public static final class layout {

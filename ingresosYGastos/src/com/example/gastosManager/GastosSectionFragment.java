@@ -7,9 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.ingresosygastos.R;
+import com.example.gastosManager.R;
 
-public class LaunchpadSectionFragment extends Fragment {
+public class GastosSectionFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,7 +23,7 @@ public class LaunchpadSectionFragment extends Fragment {
 					@Override
 					public void onClick(View view) {
 						Intent intent = new Intent(getActivity(),
-								LaunchpadSectionFragment.class);
+								GastosSectionFragment.class);
 						startActivityForResult(intent, 1);
 					}
 				});
@@ -52,5 +52,10 @@ public class LaunchpadSectionFragment extends Fragment {
 		return rootView;
 	}
 	// Aqui los nuevos listeners
+	public void botonNuevoGasto(View v)
+	{
+		
+	}
+	
 
 }

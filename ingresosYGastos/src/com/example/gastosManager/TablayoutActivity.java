@@ -11,7 +11,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 
-import com.example.ingresosygastos.R;
+import com.example.gastosManager.R;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class TablayoutActivity extends FragmentActivity implements
@@ -65,7 +65,6 @@ public class TablayoutActivity extends FragmentActivity implements
 		CharSequence opciones = "Opciones";
 		CharSequence informes = "Informes";
 		CharSequence Miscelanea = "Miscelanea";
-		char a = 'a';
 		actionBar.addTab(actionBar.newTab().setText(opciones)
 				.setTabListener(this));
 		actionBar.addTab(actionBar.newTab().setText(informes)

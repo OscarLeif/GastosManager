@@ -4,35 +4,41 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" >
-    </LinearLayout>
-
     <TextView
         android:id="@+id/txtSeleccioneUsuario"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:text="Escribe tu Nombre: "
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <EditText
-        android:id="@+id/editText1"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="5"
-        android:ems="10"
-        android:inputType="textPersonName" >
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
-        <requestFocus />
-    </EditText>
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/botonExtra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="botonExtra"
+        android:text="extra" />
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" >
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        >
 
         <Button
             android:id="@+id/buttonOK"
@@ -50,13 +56,5 @@
             android:onClick="cancelar"
             android:text="Cancelar" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/botonExtra"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:onClick="botonExtra"
-        android:text="extra" />
 
 </LinearLayout>

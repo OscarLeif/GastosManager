@@ -16,11 +16,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.gastosManager.TablayoutActivity;
-import com.example.ingresosygastos.R;
+import com.example.gastosManager.R;
 
 public class MainActivity extends Activity {
 	private UsersDataSource datasource;
-	private int posicionListView = 0;
+	private int posicionListView = -1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -126,10 +126,17 @@ public class MainActivity extends Activity {
 	}
 
 	public void botonOK(View v) {
+		if(posicionListView >= 0)
+		{
 		Intent i = new Intent(this, TablayoutActivity.class);
 		String posicionString = Integer.toString(posicionListView);
 		i.putExtra("Position", posicionString);
 		startActivity(i);
+		}
+		if(posicionListView <=-1)
+		{
+			System.out.println("El indice es negativo seguro, no hay elementos en la base de datos.");
+		}
 	}
 
 	public void indiceLista() {

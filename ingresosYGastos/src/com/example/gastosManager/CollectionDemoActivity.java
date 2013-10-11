@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 
-import com.example.ingresosygastos.R;
+import com.example.gastosManager.R;
 
 public class CollectionDemoActivity extends Activity {
 

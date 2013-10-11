@@ -14,28 +14,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="@string/TituloAp"
+        android:text="Selecciona tu usuario"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="@dimen/Titulos" />
-
-    <Button
-        android:id="@+id/botonAgregar"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/botonAgregar" />
     
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="103dp" >
 
         <ListView
             android:id="@+id/listView1"
-            android:layout_width="87dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
         </ListView>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/botonAgregar"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Aceptar" />
+
+        <Button
+            android:id="@+id/botonAgregar"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/botonAgregar" />
     </LinearLayout>
 
 </LinearLayout>

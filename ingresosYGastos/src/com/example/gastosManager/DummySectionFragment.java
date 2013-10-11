@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.ingresosygastos.R;
+import com.example.gastosManager.R;
 
 public class DummySectionFragment extends Fragment {
 

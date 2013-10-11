@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" >
+     >
 
     <TextView
         android:id="@+id/textViewTituloAp"
@@ -18,31 +18,35 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="@dimen/Titulos" />
 
-    <Button
-        android:id="@+id/botonAgregar"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/agregar" 
-        android:onClick="botonAgregar"/>
-
-    <Button
-        android:id="@+id/buttonOK"
-        android:layout_width="107dp"
-        android:layout_height="wrap_content"
-        android:text="Aceptar" 
-        android:onClick="botonOK"/>
-    
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="192dp" >
 
         <ListView
             android:id="@+id/listView1"
-            android:layout_width="87dp"
-            android:layout_height="wrap_content" >
-
+            android:layout_width="match_parent"
+            android:layout_height="204dp" >
         </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/buttonOK"
+            android:layout_width="107dp"
+            android:layout_height="match_parent"
+            android:onClick="botonOK"
+            android:text="Aceptar" />
+
+        <Button
+            android:id="@+id/botonAgregar"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="botonAgregar"
+            android:text="@string/agregar" />
 
     </LinearLayout>
 
