@@ -4,8 +4,9 @@ import java.sql.Date;
 
 public class GastoIngreso 
 {
+	private int IG_PK;
 	private String concepto;
-	private Date fecha;
+	private int fecha;
 	private String ingresoGasto;
 	private int valor;
 	private long id_usuario;
@@ -15,16 +16,26 @@ public class GastoIngreso
 	public String getConcepto() {
 		return concepto;
 	}
+	
+	public void setIG_PK(int IG_PK)
+	{
+		this.IG_PK = IG_PK;
+	}
+	
+	public int getIG_PK()
+	{
+		return IG_PK;
+	}
 
 	public void setConcepto(String concepto) {
 		this.concepto = concepto;
 	}
 
-	public String getFecha() {
-		return fecha.toGMTString();
+	public int getFecha() {
+		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(int fecha) {
 		this.fecha = fecha;
 	}
 
@@ -55,7 +66,7 @@ public class GastoIngreso
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return concepto;
+		return concepto + ": Valor: " + valor;
 	}
 	
 	

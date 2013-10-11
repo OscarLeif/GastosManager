@@ -33,10 +33,12 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 			+ " integer primary key autoincrement, " + USUARIO_NOMBRE + 
 			" text not null)";
 	private static final String CREATE_TABLE_INGRESOS_Y_GASTOS =
-			"create table " + TABLE_INGRESOS_Y_GASTOS + "(" + IG_ID + 
+			"create table " + TABLE_INGRESOS_Y_GASTOS + " (" + IG_ID + 
 			" integer primary key autoincrement, " + CONCEPTO + " text not null, "
-			+ FECHA + " integer, " + INGRESO_GASTO + " text not null, "+
-			VALOR + " integer, " + ID_USUARIO + " integer)";
+			+ FECHA + " text not null, " + INGRESO_GASTO + " text not null, "+
+			VALOR + " integer, " + ID_USUARIO + " integer," 
+			+ " FOREIGN KEY ("+ID_USUARIO+") REFERENCES "+MySQLiteHelper.TABLE_USERS
+			+" ("+MySQLiteHelper.USUARIO_ID+"));";
 	
 	private static final String DATABASE_CREATE = "create table " + TABLE_USERS
 			+ "(" + USUARIO_ID + " integer primary key autoincrement, "

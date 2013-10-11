@@ -39,7 +39,7 @@ public class Registro_NuevoGasto extends Activity {
 		findViewById(R.id.buttonOK).setOnClickListener(
 				new View.OnClickListener() {
 					
-					private long theDate;
+					private int theDate;
 
 					@Override
 					public void onClick(View v) {
@@ -52,10 +52,10 @@ public class Registro_NuevoGasto extends Activity {
 						gasto.setConcepto(concepto);
 						gasto.setIngresoGasto("gasto");
 						gasto.setValor(valor);
-						gasto.setId_usuario(user_id1);
+						gasto.setId_usuario(user_id1 +1);
 						theDate = 15;
 						Date sqlDate = new Date(theDate);
-						gasto.setFecha(sqlDate);
+						gasto.setFecha(theDate);
 						datasource.crearNuevoGastoIngreso(gasto);
 						finish();
 					}

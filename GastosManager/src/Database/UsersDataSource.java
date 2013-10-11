@@ -34,10 +34,20 @@ public class UsersDataSource {
 	public void close() {
 		dbHelper.close();
 	}
+	
+	/**
+	 * Agrega un nuevo usuario, a la base de datos
+	 * dentro de la tabla usuarios. Al agregar se le asigna un 
+	 * ID automatico
+	 * @param nombre
+	 * @return
+	 */
 
-	public Usuario agregarUsuario(String nombre) {
+	public Usuario agregarUsuario(String nombre) 
+	{
 		ContentValues values = new ContentValues();
 		values.put(MySQLiteHelper.USUARIO_NOMBRE, nombre);
+		//Insertar Fila
 		long insertId = database.insert(MySQLiteHelper.TABLE_USERS, null,values);
 		Cursor cursor = database.query(MySQLiteHelper.TABLE_USERS, allColumns_tableUsers,
 				MySQLiteHelper.USUARIO_ID + " = " + insertId, null, null, null,
@@ -58,11 +68,12 @@ public class UsersDataSource {
 	public GastoIngreso crearNuevoGastoIngreso(GastoIngreso gastoIngreso)
 	{
 		ContentValues values = new ContentValues();
-		
-		values.put(MySQLiteHelper.INGRESO_GASTO, gastoIngreso.getIngresoGasto());
-		values.put(MySQLiteHelper.VALOR, gastoIngreso.getValor());
-		values.put(MySQLiteHelper.ID_USUARIO, gastoIngreso.getId_usuario());
-		values.put(MySQLiteHelper.FECHA, gastoIngreso.getFecha());
+		// Posiblemente aqui este el error
+		values.put(MySQLiteHelper.CONCEPTO, gastoIngreso.getConcepto() );
+		values.put(MySQLiteHelper.FECHA , gastoIngreso.getFecha() );
+		values.put(MySQLiteHelper.INGRESO_GASTO , gastoIngreso.getIngresoGasto() );
+		values.put(MySQLiteHelper.VALOR , gastoIngreso.getValor() );
+		values.put(MySQLiteHelper.ID_USUARIO, gastoIngreso.getId_usuario() );
 		
 		//insertar fila
 		long insertar_gasto_ingreso = database.insert(MySQLiteHelper.TABLE_INGRESOS_Y_GASTOS, null, values);
@@ -70,9 +81,14 @@ public class UsersDataSource {
 				allColumns_tableIngresosGastos, MySQLiteHelper.IG_ID + " = " +insertar_gasto_ingreso,null, null
 				, null, null);
 		cursor.moveToFirst();
+		GastoIngreso nuevoGasto = cursorToGasto(cursor);
 		cursor.close();
-		return gastoIngreso;
+		return nuevoGasto;
 	}
+
+
+
+
 
 	public void borrarUsuario(Usuario usuario) {
 		long id = usuario.getId();
@@ -125,11 +141,29 @@ public class UsersDataSource {
 		}
 		return listaGastosIngresos;
 	}
+	
+	public List<GastoIngreso> darTodosLosGastoIngresoPorUsuario()
+	{
+		return null;
+		
+	}
 
 	private Usuario cursorToUsuario(Cursor cursor) {
 		Usuario usuario = new Usuario();
 		usuario.setId(cursor.getLong(0));
 		usuario.setNombre(cursor.getString(1));
 		return usuario;
+	}
+	private GastoIngreso cursorToGasto(Cursor cursor) {
+		// TODO Auto-generated method stub
+		GastoIngreso gastoIngreso = new GastoIngreso();
+		gastoIngreso.setId_usuario(cursor.getLong(0));
+		gastoIngreso.setConcepto(cursor.getString(1));
+		gastoIngreso.setFecha(cursor.getInt(2));
+		gastoIngreso.setIngresoGasto(cursor.getString(3));
+		gastoIngreso.setValor(cursor.getInt(4));
+		gastoIngreso.setId_usuario(cursor.getLong(5));
+		
+		return gastoIngreso;
 	}
 }
