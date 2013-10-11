@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentPagerAdapter;
  * 
  */
 public class AppSectionsPagerAdapter extends FragmentPagerAdapter {
+	private long userKey;
 
 	public AppSectionsPagerAdapter(FragmentManager fm) {
 		super(fm);
@@ -34,7 +35,9 @@ public class AppSectionsPagerAdapter extends FragmentPagerAdapter {
 			// Al retornar este fragmento creara el contenido para ubicarlo
 			// dentro
 			// de la tab.
-			return new GastosSectionFragment();// Esta clase hereda de Fragment.
+			GastosSectionFragment gastosFragment = new GastosSectionFragment();// Esta clase hereda de Fragment.
+			gastosFragment.darUserID(userKey);
+			return gastosFragment;
 
 		default:
 			// The other sections of the app are dummy placeholders.
@@ -48,11 +51,16 @@ public class AppSectionsPagerAdapter extends FragmentPagerAdapter {
 
 	@Override
 	public int getCount() {
-		return 3;
+		return 2;
 	}
 
 	@Override
 	public CharSequence getPageTitle(int position) {
 		return "Section " + (position + 1);
+	}
+
+	public long getUserKey(long usuario_ID) {
+		// TODO Auto-generated method stub
+		return userKey = usuario_ID;
 	}
 }

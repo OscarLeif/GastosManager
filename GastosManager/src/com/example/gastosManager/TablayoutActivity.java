@@ -29,11 +29,12 @@ public class TablayoutActivity extends FragmentActivity implements
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections
 		// of the app.
-		mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(
-				getSupportFragmentManager());
+		mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
+		
 		Bundle extras = getIntent().getExtras();
 		String stringPos = extras.getString("Position");
 		position = Integer.parseInt(stringPos);
+		mAppSectionsPagerAdapter.getUserKey(position);
 
 		// Set up the action bar.
 		final ActionBar actionBar = getActionBar();
@@ -50,8 +51,7 @@ public class TablayoutActivity extends FragmentActivity implements
 		// user swipes between sections.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mAppSectionsPagerAdapter);
-		mViewPager
-				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+		mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 					@Override
 					public void onPageSelected(int position) {
 						// When swiping between different app sections, select
@@ -64,13 +64,12 @@ public class TablayoutActivity extends FragmentActivity implements
 				});
 		CharSequence opciones = "Opciones";
 		CharSequence informes = "Informes";
-		CharSequence Miscelanea = "Miscelanea";
+		//CharSequence Miscelanea = "Miscelanea";
 		actionBar.addTab(actionBar.newTab().setText(opciones)
 				.setTabListener(this));
 		actionBar.addTab(actionBar.newTab().setText(informes)
 				.setTabListener(this));
-		actionBar.addTab(actionBar.newTab().setText(Miscelanea)
-				.setTabListener(this));
+		//actionBar.addTab(actionBar.newTab().setText(Miscelanea).setTabListener(this));
 	}
 
 	/**

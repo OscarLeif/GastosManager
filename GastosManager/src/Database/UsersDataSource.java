@@ -9,6 +9,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.gastosManager.logica.GastoIngreso;
+
 public class UsersDataSource {
 
 	private SQLiteDatabase database;
@@ -19,6 +21,8 @@ public class UsersDataSource {
 	public UsersDataSource(Context context) {
 		dbHelper = new MySQLiteHelper(context);
 	}
+	
+	
 
 	public void open() throws SQLException {
 		database = dbHelper.getWritableDatabase();
@@ -30,7 +34,7 @@ public class UsersDataSource {
 
 	public Usuario agregarUsuario(String nombre) {
 		ContentValues values = new ContentValues();
-		values.put(MySQLiteHelper.COLUMN_NOMBRE, nombre);
+		values.put(MySQLiteHelper.USUARIO_NOMBRE, nombre);
 		long insertId = database.insert(MySQLiteHelper.TABLE_USERS, null,
 				values);
 		Cursor cursor = database.query(MySQLiteHelper.TABLE_USERS, allColumns_tableUsers,
@@ -47,19 +51,26 @@ public class UsersDataSource {
 	 * Basado en el ID del usuario actual es donde se agregara, la
 	 * nueva informacion para la base de datos.
 	 * @param usuario
+	 * @return 
 	 */
-	public void agregarNuevoGastoIngreso(Usuario usuario)
+	public long crearNuevoGastoIngreso(GastoIngreso gastoIngreso)
 	{
 		ContentValues values = new ContentValues();
-		long userKey = usuario.getId();
-		//values.put(MySQLiteHelper.COLUMN_GASTO, value)
 		
+		values.put(MySQLiteHelper.INGRESO_GASTO, gastoIngreso.getIngresoGasto());
+		values.put(MySQLiteHelper.VALOR, gastoIngreso.getValor());
+		values.put(MySQLiteHelper.ID_USUARIO, gastoIngreso.getId_usuario());
+		
+		//insertar fila
+		long gasto_ingreso = database.insert(MySQLiteHelper.TABLE_INGRESOS_Y_GASTOS, null, values);
+		
+		return gasto_ingreso;
 	}
 
 	public void borrarUsuario(Usuario usuario) {
 		long id = usuario.getId();
 		System.out.println("Comment deleted with id: " + id);
-		database.delete(MySQLiteHelper.TABLE_USERS, MySQLiteHelper.COLUMN_ID
+		database.delete(MySQLiteHelper.TABLE_USERS, MySQLiteHelper.USUARIO_ID
 				+ " = " + id, null);
 
 	}
@@ -78,6 +89,34 @@ public class UsersDataSource {
 		// make sure to close the cursor
 		cursor.close();
 		return usuarios;
+	}
+	
+	public List<GastoIngreso> darTodosLosGastoIngreso ()
+	{
+		List<GastoIngreso> listaGastosIngresos = new ArrayList<GastoIngreso>();
+		String selectQuery = "select  * from " + MySQLiteHelper.TABLE_INGRESOS_Y_GASTOS;
+		System.out.println("Select Querry: " + selectQuery);
+		
+		Cursor c = database.rawQuery(selectQuery, null);
+		
+		//Looping through all rows and ading to list
+		if(c.moveToFirst() )
+		{
+			do
+			{
+				GastoIngreso ig = new GastoIngreso();
+				ig.setId_usuario(c.getLong(c.getColumnIndex(MySQLiteHelper.USUARIO_ID)));
+				ig.setConcepto(c.getString(c.getColumnIndex(MySQLiteHelper.CONCEPTO)));
+				//ig.setFecha(c.get))
+				ig.setIngresoGasto(c.getString(c.getColumnIndex(MySQLiteHelper.INGRESO_GASTO)));
+				ig.setValor(c.getInt(c.getColumnIndex(MySQLiteHelper.VALOR)));
+				
+				listaGastosIngresos.add(ig);
+				
+			}while(c.moveToNext());
+			
+		}
+		return listaGastosIngresos;
 	}
 
 	private Usuario cursorToUsuario(Cursor cursor) {

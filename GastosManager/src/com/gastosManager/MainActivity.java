@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
 		datasource = new UsersDataSource(this);
 		datasource.open();
 		
-		final ListView lista = (ListView) findViewById(R.id.listView1);
+		final ListView lista = (ListView) findViewById(R.id.listaGastos);
 		// use the SimpleCursorAdapter to show the
 		// elements in a ListView
 		List<Usuario> values = datasource.darTodosLosUsuario();
@@ -46,7 +46,7 @@ public class MainActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onResume();
 		datasource.open();
-		ListView lista = (ListView) findViewById(R.id.listView1);
+		ListView lista = (ListView) findViewById(R.id.listaGastos);
 		// use the SimpleCursorAdapter to show the
 		// elements in a ListView
 	    List<Usuario> values = datasource.darTodosLosUsuario();
@@ -81,7 +81,7 @@ public class MainActivity extends Activity {
 		case R.id.borrarActual:
 			
 			datasource.open();
-			ListView lista = (ListView) findViewById(R.id.listView1);
+			ListView lista = (ListView) findViewById(R.id.listaGastos);
 			// use the SimpleCursorAdapter to show the
 			// elements in a ListView
 		    List<Usuario> values = datasource.darTodosLosUsuario();
@@ -140,7 +140,7 @@ public class MainActivity extends Activity {
 	}
 
 	public void indiceLista() {
-		ListView listaCuentas = (ListView) findViewById(R.id.listView1);
+		ListView listaCuentas = (ListView) findViewById(R.id.listaGastos);
 		listaCuentas.setClickable(true);
 		listaCuentas
 				.setOnItemClickListener(new AdapterView.OnItemClickListener() {

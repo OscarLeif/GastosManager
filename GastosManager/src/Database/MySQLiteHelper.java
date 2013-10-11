@@ -7,26 +7,26 @@ import android.util.Log;
 
 public class MySQLiteHelper extends SQLiteOpenHelper {
 	
-	public final static String COLUMN_ID = "_id";
-	public final static String COLUMN_NOMBRE = "nombre";
-	public final static String COLUMN_GASTO = "gasto";
+	//public final static String COLUMN_ID = "_id";
+	//public final static String COLUMN_NOMBRE = "nombre";
+	//public final static String COLUMN_GASTO = "gasto";
 	//Database Version
 	private static final int DATABASE_VERSION = 1;
 	//DataBase Name
 	private static final String DATABASE_NAME = "IngresosYGastos.db";
 	//Table names
 	public final static String TABLE_USERS = "Usuarios";
-	private final static String TABLE_INGRESOS_Y_GASTOS = "IngresosGastos";
+	public final static String TABLE_INGRESOS_Y_GASTOS = "IngresosGastos";
 	//TABLE_USERS Column names.
 	public static final String USUARIO_ID = "nombre_id";
 	public static final String USUARIO_NOMBRE = "nombre";
 	//TABLE_INGRESOS_Y_GASTOS Column names.
 	private static final String IG_ID = "ingreso_gasto_id";
-	private static final String CONCEPTO = "concepto";
+	public static final String CONCEPTO = "concepto";
 	private static final String FECHA = "fecha";
-	private static final String INGRESO_GASTO = "ingreso_gasto";
-	private static final String VALOR = "valor";
-	private static final String ID_USUARIO = "nombre_id";
+	public static final String INGRESO_GASTO = "ingreso_gasto";
+	public static final String VALOR = "valor";
+	public static final String ID_USUARIO = "nombre_id";
 	//Create Tables STRING.
 	private static final String CREATE_TABLE_USUARIOS = 
 			"create table " + TABLE_USERS + "(" + USUARIO_ID 
@@ -39,11 +39,12 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 			VALOR + " integer, " + ID_USUARIO + " integer)";
 	
 	private static final String DATABASE_CREATE = "create table " + TABLE_USERS
-			+ "(" + COLUMN_ID + " integer primary key autoincrement, "
-			+ COLUMN_NOMBRE + " text not null, "+COLUMN_GASTO + " integer);";
+			+ "(" + USUARIO_ID + " integer primary key autoincrement, "
+			+ USUARIO_NOMBRE + " text not null);";
 
 	public MySQLiteHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		System.out.println(context);
 	}
 
 	@Override
