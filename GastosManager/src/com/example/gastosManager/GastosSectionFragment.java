@@ -31,23 +31,23 @@ public class GastosSectionFragment extends Fragment {
 				container, false);
 		darUserID(user_id);
 		
-		//datasource = new UsersDataSource(Context t);
-		//datasource.open();
+		datasource = new UsersDataSource(getActivity());
+		datasource.open();
 		
-		//ListView lista = (ListView) rootView.findViewById(R.id.listaGastos);
+		ListView lista = (ListView) rootView.findViewById(R.id.listaGastos);
 		// use the SimpleCursorAdapter to show the
 		// elements in a ListView
-	    //List<GastoIngreso> values = datasource.darTodosLosGastoIngreso();
-		//ArrayAdapter<GastoIngreso> adapter = new ArrayAdapter<GastoIngreso>(this,android.R.layout.simple_list_item_1, values);
-		//lista.setAdapter(adapter);
+	    List<GastoIngreso> values = datasource.darTodosLosGastoIngreso();
+		ArrayAdapter<GastoIngreso> adapter = new ArrayAdapter<GastoIngreso>(getActivity(),android.R.layout.simple_list_item_1, values);
+		lista.setAdapter(adapter);
 
 		// Demonstration of a collection-browsing activity.
 		rootView.findViewById(R.id.botonNuevoIngreso).setOnClickListener(
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-						//Intent intent = new Intent(getActivity(),GastosSectionFragment.class);
-						//startActivityForResult(intent, 1);
+						Intent intent = new Intent(getActivity(),Registro_NuevoGasto.class);
+						startActivity(intent);
 						System.out.println("el boton nuevo ingreso funciona correctamente");
 					}
 				});

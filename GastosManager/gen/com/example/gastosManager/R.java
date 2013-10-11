@@ -26,39 +26,42 @@ public final class R {
     }
     public static final class id {
         public static final int FechaNacimiento=0x7f080006;
-        public static final int action_settings=0x7f080013;
-        public static final int borrarActual=0x7f080017;
-        public static final int botonAgregar=0x7f08000f;
+        public static final int action_settings=0x7f080015;
+        public static final int borrarActual=0x7f080019;
+        public static final int botonAgregar=0x7f080011;
         public static final int botonAgregarUsuario=0x7f080007;
-        public static final int botonCancelar=0x7f080012;
-        public static final int botonExtra=0x7f080011;
+        public static final int botonCancelar=0x7f080014;
+        public static final int botonExtra=0x7f080013;
         public static final int botonFechaNacimiento=0x7f080005;
-        public static final int botonNuevoGasto=0x7f08000a;
-        public static final int botonNuevoIngreso=0x7f08000b;
-        public static final int buttonOK=0x7f08000e;
+        public static final int botonNuevoGasto=0x7f08000d;
+        public static final int botonNuevoIngreso=0x7f08000e;
+        public static final int buttonCancel=0x7f08000b;
+        public static final int buttonOK=0x7f08000a;
         public static final int datePicker1=0x7f080008;
         public static final int editEdadA=0x7f080003;
         public static final int editNombreA=0x7f080002;
         public static final int editNumeroA=0x7f080004;
-        public static final int editText1=0x7f080010;
-        public static final int item1=0x7f080014;
-        public static final int item2=0x7f080015;
-        public static final int listaGastos=0x7f08000c;
-        public static final int menuAgregar=0x7f080016;
-        public static final int pager=0x7f080009;
+        public static final int editText1=0x7f080012;
+        public static final int item1=0x7f080016;
+        public static final int item2=0x7f080017;
+        public static final int listaGastos=0x7f08000f;
+        public static final int menuAgregar=0x7f080018;
+        public static final int pager=0x7f08000c;
+        public static final int textView1=0x7f080009;
         public static final int textView2=0x7f080001;
-        public static final int textViewTituloAp=0x7f08000d;
+        public static final int textViewTituloAp=0x7f080010;
         public static final int txtSeleccioneUsuario=0x7f080000;
     }
     public static final class layout {
         public static final int acerca_de_insos=0x7f030000;
         public static final int activity_collection_demo=0x7f030001;
         public static final int activity_register=0x7f030002;
-        public static final int activity_tablayout=0x7f030003;
-        public static final int fragment_section_dummy=0x7f030004;
-        public static final int fragment_section_gastos=0x7f030005;
-        public static final int main=0x7f030006;
-        public static final int nuevo_usuario=0x7f030007;
+        public static final int activity_registro__nuevo_gasto=0x7f030003;
+        public static final int activity_tablayout=0x7f030004;
+        public static final int fragment_section_dummy=0x7f030005;
+        public static final int fragment_section_gastos=0x7f030006;
+        public static final int main=0x7f030007;
+        public static final int nuevo_usuario=0x7f030008;
     }
     public static final class menu {
         public static final int collection_demo=0x7f070000;
@@ -68,8 +71,9 @@ public final class R {
         public static final int nuevo_usuario=0x7f070004;
         public static final int opciones=0x7f070005;
         public static final int register=0x7f070006;
-        public static final int tablayout=0x7f070007;
-        public static final int usuario_datos_=0x7f070008;
+        public static final int registro__nuevo_gasto=0x7f070007;
+        public static final int tablayout=0x7f070008;
+        public static final int usuario_datos_=0x7f070009;
     }
     public static final class string {
         public static final int TituloAp=0x7f05000c;
@@ -90,6 +94,7 @@ public final class R {
         public static final int title_activity_nuevo_usuario=0x7f050003;
         public static final int title_activity_opciones=0x7f050005;
         public static final int title_activity_register=0x7f05000e;
+        public static final int title_activity_registro__nuevo_gasto=0x7f050014;
         public static final int title_activity_tablayout=0x7f050006;
         public static final int title_activity_usuario_datos_=0x7f050004;
     }
