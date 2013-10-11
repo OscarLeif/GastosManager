@@ -39,7 +39,7 @@ public class Nuevo_usuario_Activity extends Activity {
 				// TODO Auto-generated method stub
 				Log.d("Do:", " Something amazing");
 				// Aqui debe haber validacion de datos.
-				EditText edt = (EditText) findViewById(R.id.editText1);
+				EditText edt = (EditText) findViewById(R.id.editTextConcepto);
 				String nombre = edt.getText().toString();
 				datasource.open();
 				datasource.agregarUsuario(nombre);

@@ -17,6 +17,9 @@ public class UsersDataSource {
 	private MySQLiteHelper dbHelper;
 	private String[] allColumns_tableUsers = { MySQLiteHelper.USUARIO_ID,
 			MySQLiteHelper.USUARIO_NOMBRE };
+	
+	private String[] allColumns_tableIngresosGastos = {MySQLiteHelper.IG_ID, MySQLiteHelper.CONCEPTO,
+			MySQLiteHelper.FECHA, MySQLiteHelper.INGRESO_GASTO,MySQLiteHelper.VALOR,MySQLiteHelper.ID_USUARIO};
 
 	public UsersDataSource(Context context) {
 		dbHelper = new MySQLiteHelper(context);
@@ -35,8 +38,7 @@ public class UsersDataSource {
 	public Usuario agregarUsuario(String nombre) {
 		ContentValues values = new ContentValues();
 		values.put(MySQLiteHelper.USUARIO_NOMBRE, nombre);
-		long insertId = database.insert(MySQLiteHelper.TABLE_USERS, null,
-				values);
+		long insertId = database.insert(MySQLiteHelper.TABLE_USERS, null,values);
 		Cursor cursor = database.query(MySQLiteHelper.TABLE_USERS, allColumns_tableUsers,
 				MySQLiteHelper.USUARIO_ID + " = " + insertId, null, null, null,
 				null);
@@ -53,18 +55,23 @@ public class UsersDataSource {
 	 * @param usuario
 	 * @return 
 	 */
-	public long crearNuevoGastoIngreso(GastoIngreso gastoIngreso)
+	public GastoIngreso crearNuevoGastoIngreso(GastoIngreso gastoIngreso)
 	{
 		ContentValues values = new ContentValues();
 		
 		values.put(MySQLiteHelper.INGRESO_GASTO, gastoIngreso.getIngresoGasto());
 		values.put(MySQLiteHelper.VALOR, gastoIngreso.getValor());
 		values.put(MySQLiteHelper.ID_USUARIO, gastoIngreso.getId_usuario());
+		values.put(MySQLiteHelper.FECHA, gastoIngreso.getFecha());
 		
 		//insertar fila
-		long gasto_ingreso = database.insert(MySQLiteHelper.TABLE_INGRESOS_Y_GASTOS, null, values);
-		
-		return gasto_ingreso;
+		long insertar_gasto_ingreso = database.insert(MySQLiteHelper.TABLE_INGRESOS_Y_GASTOS, null, values);
+		Cursor cursor = database.query(MySQLiteHelper.TABLE_INGRESOS_Y_GASTOS, 
+				allColumns_tableIngresosGastos, MySQLiteHelper.IG_ID + " = " +insertar_gasto_ingreso,null, null
+				, null, null);
+		cursor.moveToFirst();
+		cursor.close();
+		return gastoIngreso;
 	}
 
 	public void borrarUsuario(Usuario usuario) {
@@ -99,7 +106,7 @@ public class UsersDataSource {
 		
 		Cursor c = database.rawQuery(selectQuery, null);
 		
-		//Looping through all rows and ading to list
+		//Looping through all rows and adding to list
 		if(c.moveToFirst() )
 		{
 			do

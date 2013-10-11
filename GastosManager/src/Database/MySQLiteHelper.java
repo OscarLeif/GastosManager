@@ -21,9 +21,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	public static final String USUARIO_ID = "nombre_id";
 	public static final String USUARIO_NOMBRE = "nombre";
 	//TABLE_INGRESOS_Y_GASTOS Column names.
-	private static final String IG_ID = "ingreso_gasto_id";
+	public static final String IG_ID = "ingreso_gasto_id";
 	public static final String CONCEPTO = "concepto";
-	private static final String FECHA = "fecha";
+	public static final String FECHA = "fecha";
 	public static final String INGRESO_GASTO = "ingreso_gasto";
 	public static final String VALOR = "valor";
 	public static final String ID_USUARIO = "nombre_id";

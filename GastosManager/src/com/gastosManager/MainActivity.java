@@ -55,6 +55,13 @@ public class MainActivity extends Activity {
 		lista.setAdapter(adapter);
 
 	}
+	
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		datasource.close();
+	}
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {

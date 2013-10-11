@@ -20,8 +20,8 @@ public class GastoIngreso
 		this.concepto = concepto;
 	}
 
-	public Date getFecha() {
-		return fecha;
+	public String getFecha() {
+		return fecha.toGMTString();
 	}
 
 	public void setFecha(Date fecha) {
@@ -50,6 +50,12 @@ public class GastoIngreso
 
 	public void setId_usuario(long id_usuario) {
 		this.id_usuario = id_usuario;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return concepto;
 	}
 	
 	

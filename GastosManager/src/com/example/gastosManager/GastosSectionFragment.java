@@ -47,6 +47,7 @@ public class GastosSectionFragment extends Fragment {
 					@Override
 					public void onClick(View view) {
 						Intent intent = new Intent(getActivity(),Registro_NuevoGasto.class);
+						intent.putExtra("key", user_id);
 						startActivity(intent);
 						System.out.println("el boton nuevo ingreso funciona correctamente");
 					}
@@ -54,6 +55,10 @@ public class GastosSectionFragment extends Fragment {
 
 		return rootView;
 	}
+	
+
+
+
 
 /**
  * Definitivamente este metodo no funciona en los fragements activities.
