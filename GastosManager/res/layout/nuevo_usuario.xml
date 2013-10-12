@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical" >
 
     <TextView
         android:id="@+id/txtSeleccioneUsuario"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Escribe tu Nombre: "
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -14,6 +14,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1.39"
         android:orientation="vertical" >
 
         <EditText
@@ -22,7 +23,6 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName" />
-
     </LinearLayout>
 
     <Button
@@ -32,13 +32,10 @@
         android:onClick="botonExtra"
         android:text="extra" />
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        >
+        android:layout_margin="@dimen/activity_horizontal_margin" >
 
         <Button
             android:id="@+id/buttonOK"

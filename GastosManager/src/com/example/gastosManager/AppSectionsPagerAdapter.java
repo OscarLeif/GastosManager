@@ -23,7 +23,8 @@ public class AppSectionsPagerAdapter extends FragmentPagerAdapter {
 	 * numero i, depende del numero de tabs creadas anteriormente. Si creamos 3
 	 * tabs son 0,1,2 casos. el default case remplazara esos casos que no
 	 * existieron, si solo use un case 1, case 2 y 3 seran default. Recordar que
-	 * cada retorno del case es una clase Fragment.
+	 * cada retorno del case es una clase Fragment. Este numero i, viene del
+	 * override getCount();
 	 */
 	@Override
 	public Fragment getItem(int i) {
@@ -48,10 +49,16 @@ public class AppSectionsPagerAdapter extends FragmentPagerAdapter {
 			return fragment;
 		}
 	}
+	/**
+	 * metodo getCount()
+	 * retorna el numero, que finalmente decide, cuantos
+	 * tabs, o mejor Fragments se crearan. Por otro lado el nombre de
+	 * cada tab se designa en TblayoutActivity, esa asignacion descendente.
+	 */
 
 	@Override
 	public int getCount() {
-		return 2;
+		return 3;
 	}
 
 	@Override

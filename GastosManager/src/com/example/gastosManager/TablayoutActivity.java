@@ -62,14 +62,14 @@ public class TablayoutActivity extends FragmentActivity implements
 						actionBar.setSelectedNavigationItem(position);
 					}
 				});
-		CharSequence opciones = "Opciones";
-		CharSequence informes = "Informes";
-		//CharSequence Miscelanea = "Miscelanea";
+		CharSequence opciones = "Ingresos";
+		CharSequence informes = "Gastos";
+		CharSequence Miscelanea = "Miscelanea";
 		actionBar.addTab(actionBar.newTab().setText(opciones)
 				.setTabListener(this));
 		actionBar.addTab(actionBar.newTab().setText(informes)
 				.setTabListener(this));
-		//actionBar.addTab(actionBar.newTab().setText(Miscelanea).setTabListener(this));
+		actionBar.addTab(actionBar.newTab().setText(Miscelanea).setTabListener(this));
 	}
 
 	/**
