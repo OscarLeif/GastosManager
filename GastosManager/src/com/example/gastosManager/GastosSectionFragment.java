@@ -22,6 +22,7 @@ public class GastosSectionFragment extends Fragment {
 	private ListView lista ;
 	private static long idStatico;
 	private boolean horizontal ;
+	private Bundle savedInstanceState;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,7 +30,17 @@ public class GastosSectionFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_section_gastos,
 				container, false);
 		
+		if(savedInstanceState != null)
+		{
+		this.savedInstanceState = savedInstanceState;
+		savedInstanceState.putInt("userKey",(int) idStatico);
+		idStatico = savedInstanceState.getInt("userKey");
+		}
+		if(savedInstanceState == null)
+		{
 		idStatico = darUserID(user_id);
+		}
+		
 		horizontal = true;
 		
 		lista = (ListView) rootView.findViewById(R.id.listaGastos);
