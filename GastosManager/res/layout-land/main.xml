@@ -36,12 +36,13 @@
         android:layout_height="wrap_content" >
 
         <Button
-            android:id="@+id/botonAgregar"
+            android:id="@+id/buttonOK"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Aceptar" />
+            android:text="Aceptar" 
+            android:onClick="botonOK"/>
 
         <Button
             android:id="@+id/botonAgregar"
@@ -49,7 +50,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/botonAgregar" />
+            android:text="@string/botonAgregar" 
+            android:onClick="botonAgregar"/>
     </LinearLayout>
 
 </LinearLayout>
