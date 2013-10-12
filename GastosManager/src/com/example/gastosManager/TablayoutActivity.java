@@ -15,96 +15,107 @@ import com.example.gastosManager.R;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class TablayoutActivity extends FragmentActivity implements
-		ActionBar.TabListener {
-	private int position;
-	ViewPager mViewPager;
-	AppSectionsPagerAdapter mAppSectionsPagerAdapter;
+	ActionBar.TabListener
+{
+    private int position;
+    ViewPager mViewPager;
+    AppSectionsPagerAdapter mAppSectionsPagerAdapter;
 
-	@SuppressLint("NewApi")
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_tablayout);
-		// Create the adapter that will return a fragment for each of the three
-		// primary sections
-		// of the app.
-		mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
-		
-		Bundle extras = getIntent().getExtras();
-		String stringPos = extras.getString("Position");
-		position = Integer.parseInt(stringPos);
-		mAppSectionsPagerAdapter.getUserKey(position);
+    @SuppressLint("NewApi")
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+	super.onCreate(savedInstanceState);
+	setContentView(R.layout.activity_tablayout);
+	// Create the adapter that will return a fragment for each of the three
+	// primary sections
+	// of the app.
+	mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(
+		getSupportFragmentManager());
 
-		// Set up the action bar.
-		final ActionBar actionBar = getActionBar();
+	Bundle extras = getIntent().getExtras();
+	String stringPos = extras.getString("Position");
+	position = Integer.parseInt(stringPos);
+	mAppSectionsPagerAdapter.getUserKey(position);
 
-		// Specify that the Home/Up button should not be enabled, since there is
-		// no hierarchical
-		// parent.
-		actionBar.setHomeButtonEnabled(false);
+	// Set up the action bar.
+	final ActionBar actionBar = getActionBar();
 
-		// Specify that we will be displaying tabs in the action bar.
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		// Set up the ViewPager, attaching the adapter and setting up a listener
-		// for when the
-		// user swipes between sections.
-		mViewPager = (ViewPager) findViewById(R.id.pager);
-		mViewPager.setAdapter(mAppSectionsPagerAdapter);
-		mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-					@Override
-					public void onPageSelected(int position) {
-						// When swiping between different app sections, select
-						// the corresponding tab.
-						// We can also use ActionBar.Tab#select() to do this if
-						// we have a reference to the
-						// Tab.
-						actionBar.setSelectedNavigationItem(position);
-					}
-				});
-		CharSequence opciones = "Ingresos";
-		CharSequence informes = "Gastos";
-		CharSequence Miscelanea = "Miscelanea";
-		actionBar.addTab(actionBar.newTab().setText(opciones)
-				.setTabListener(this));
-		actionBar.addTab(actionBar.newTab().setText(informes)
-				.setTabListener(this));
-		actionBar.addTab(actionBar.newTab().setText(Miscelanea).setTabListener(this));
-	}
+	// Specify that the Home/Up button should not be enabled, since there is
+	// no hierarchical
+	// parent.
+	actionBar.setHomeButtonEnabled(false);
 
-	/**
-	 * // For each of the sections in the app, add a tab to the action bar. for
-	 * (int i = 0; i < mAppSectionsPagerAdapter.getCount(); i++) { // Create a
-	 * tab with text corresponding to the page title defined by the adapter. //
-	 * Also specify this Activity object, which implements the TabListener
-	 * interface, as the // listener for when this tab is selected.
-	 * actionBar.addTab( actionBar.newTab()
-	 * .setText(mAppSectionsPagerAdapter.getPageTitle(i))//Aqui es donde se
-	 * coloca el nombre a cada Tab. .setTabListener((TabListener) this));
-	 */
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.tablayout, menu);
-		return true;
-	}
+	// Specify that we will be displaying tabs in the action bar.
+	actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+	// Set up the ViewPager, attaching the adapter and setting up a listener
+	// for when the
+	// user swipes between sections.
+	mViewPager = (ViewPager) findViewById(R.id.pager);
+	mViewPager.setAdapter(mAppSectionsPagerAdapter);
+	mViewPager
+		.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener()
+		{
+		    @Override
+		    public void onPageSelected(int position)
+		    {
+			// When swiping between different app sections, select
+			// the corresponding tab.
+			// We can also use ActionBar.Tab#select() to do this if
+			// we have a reference to the
+			// Tab.
+			actionBar.setSelectedNavigationItem(position);
+		    }
+		});
+	CharSequence opciones = "Ingresos";
+	CharSequence informes = "Gastos";
+	CharSequence Miscelanea = "Miscelanea";
+	actionBar.addTab(actionBar.newTab().setText(opciones)
+		.setTabListener(this));
+	actionBar.addTab(actionBar.newTab().setText(informes)
+		.setTabListener(this));
+	actionBar.addTab(actionBar.newTab().setText(Miscelanea)
+		.setTabListener(this));
+    }
 
-	@Override
-	public void onTabReselected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
+    /**
+     * // For each of the sections in the app, add a tab to the action bar. for
+     * (int i = 0; i < mAppSectionsPagerAdapter.getCount(); i++) { // Create a
+     * tab with text corresponding to the page title defined by the adapter. //
+     * Also specify this Activity object, which implements the TabListener
+     * interface, as the // listener for when this tab is selected.
+     * actionBar.addTab( actionBar.newTab()
+     * .setText(mAppSectionsPagerAdapter.getPageTitle(i))//Aqui es donde se
+     * coloca el nombre a cada Tab. .setTabListener((TabListener) this));
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+	// Inflate the menu; this adds items to the action bar if it is present.
+	getMenuInflater().inflate(R.menu.tablayout, menu);
+	return true;
+    }
 
-	}
+    @Override
+    public void onTabReselected(Tab tab, FragmentTransaction ft)
+    {
+	// TODO Auto-generated method stub
 
-	@Override
-	public void onTabSelected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
-		mViewPager.setCurrentItem(tab.getPosition());
-	}
+    }
 
-	@Override
-	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
+    @Override
+    public void onTabSelected(Tab tab, FragmentTransaction ft)
+    {
+	// TODO Auto-generated method stub
+	mViewPager.setCurrentItem(tab.getPosition());
+    }
 
-	}
+    @Override
+    public void onTabUnselected(Tab tab, FragmentTransaction ft)
+    {
+	// TODO Auto-generated method stub
+
+    }
 
 }

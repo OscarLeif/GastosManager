@@ -42,12 +42,11 @@
 
         <Button
             android:id="@+id/botonAgregar"
-            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="botonAgregar"
-            android:text="@string/agregar" />
+            android:text="agregar" />
     </LinearLayout>
 
 </LinearLayout>
