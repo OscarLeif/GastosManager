@@ -2,46 +2,51 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent" >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="115dp"
-        android:layout_marginBottom="@dimen/activity_horizontal_margin"
-        android:orientation="horizontal" >
+        android:layout_height="match_parent"
+        android:gravity="fill" >
 
-        <Button
-            android:id="@+id/botonNuevoGasto"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Nuevo gasto" 
-            />
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal" >
 
-        <Button
-            android:id="@+id/botonNuevoIngreso"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Nuevo ingreso" 
-            />
+            <Button
+                android:id="@+id/botonNuevoGasto"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nuevo gasto" />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/botonNuevoIngreso"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nuevo ingreso" />
+        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="276dp"
-        android:layout_gravity="center_vertical"
-        android:baselineAligned="true"
-        android:measureWithLargestChild="true"
-        android:orientation="vertical" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:baselineAligned="true"
+            android:measureWithLargestChild="true"
+            android:orientation="vertical" >
+        </LinearLayout>
 
         <ListView
             android:id="@+id/listaGastos"
             android:layout_width="match_parent"
-            android:layout_height="194dp"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:layout_weight="0.43" >
-        </ListView>
+            android:layout_height="350dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/linearLayout1"
+            android:layout_weight="1" >
 
-    </LinearLayout>
+        </ListView>
+    </RelativeLayout>
 
 </FrameLayout>

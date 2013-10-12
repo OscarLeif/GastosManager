@@ -66,7 +66,7 @@ public class GastoIngreso
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return concepto + ": Valor: " + valor;
+		return "Usuario ID: " + id_usuario + " "+concepto + ": Valor: " + valor;
 	}
 	
 	

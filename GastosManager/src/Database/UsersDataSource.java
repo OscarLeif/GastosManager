@@ -95,6 +95,7 @@ public class UsersDataSource {
 		System.out.println("Comment deleted with id: " + id);
 		database.delete(MySQLiteHelper.TABLE_USERS, MySQLiteHelper.USUARIO_ID
 				+ " = " + id, null);
+		database.delete(MySQLiteHelper.TABLE_INGRESOS_Y_GASTOS, MySQLiteHelper.USUARIO_ID + " = "+ id, null);
 
 	}
 

@@ -1,13 +1,11 @@
 package com.example.gastosManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Database.UsersDataSource;
-import Database.Usuario;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.sax.RootElement;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,30 +13,37 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.gastosManager.R;
-import com.gastosManager.MainActivity;
 import com.gastosManager.logica.GastoIngreso;
 
 public class GastosSectionFragment extends Fragment {
 	
 	private long user_id;
 	private UsersDataSource datasource;
+	private ListView lista ;
+	private static long idStatico;
+	private boolean horizontal ;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_section_gastos,
 				container, false);
-		darUserID(user_id);
 		
+		idStatico = darUserID(user_id);
+		horizontal = true;
+		
+		lista = (ListView) rootView.findViewById(R.id.listaGastos);
 		datasource = new UsersDataSource(getActivity());
 		datasource.open();
 		
-		ListView lista = (ListView) rootView.findViewById(R.id.listaGastos);
+		
 		// use the SimpleCursorAdapter to show the
 		// elements in a ListView
 	    List<GastoIngreso> values = datasource.darTodosLosGastoIngreso();
-		ArrayAdapter<GastoIngreso> adapter = new ArrayAdapter<GastoIngreso>(getActivity(),android.R.layout.simple_list_item_1, values);
+	    ArrayList<GastoIngreso> arregloG = new ArrayList<GastoIngreso>();
+
+	    arregloG = sacarElementosDeUsuario(values);
+		ArrayAdapter<GastoIngreso> adapter = new ArrayAdapter<GastoIngreso>(getActivity(),android.R.layout.simple_list_item_1, arregloG);
 		lista.setAdapter(adapter);
 
 		// Demonstration of a collection-browsing activity.
@@ -56,9 +61,34 @@ public class GastosSectionFragment extends Fragment {
 		return rootView;
 	}
 	
+	
+      @Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onActivityCreated(savedInstanceState);
+	}
 
 
+	@Override
+    public void onResume() 
+    {
+	// TODO Auto-generated method stub
+	super.onResume();
+	datasource = new UsersDataSource(getActivity());
+	datasource.open();
+	
+	
+	// use the SimpleCursorAdapter to show the
+	// elements in a ListView
+	List<GastoIngreso> values = datasource.darTodosLosGastoIngreso();
+    ArrayList<GastoIngreso> arregloG = new ArrayList<GastoIngreso>();
 
+    arregloG = sacarElementosDeUsuario(values);
+	ArrayAdapter<GastoIngreso> adapter = new ArrayAdapter<GastoIngreso>(getActivity(),android.R.layout.simple_list_item_1, arregloG);
+	lista.setAdapter(adapter);
+    }
+      
+      
 
 /**
  * Definitivamente este metodo no funciona en los fragements activities.
@@ -69,14 +99,23 @@ public class GastosSectionFragment extends Fragment {
 
 	}
 
-	public void darUserID(long userKey) {
+	public long darUserID(long userKey) {
 		// TODO Auto-generated method stub
-		user_id = userKey;
+		return user_id = userKey;
 	}
 	
-	public void llenarLista()
+	
+	public ArrayList<GastoIngreso> sacarElementosDeUsuario(List<GastoIngreso> lista)
 	{
-		
+		ArrayList<GastoIngreso> arregloGastoIngreso = new ArrayList<GastoIngreso>();
+		for(int i=0;i<lista.size();i++)
+		{
+			if(lista.get(i).getId_usuario() == idStatico+1)
+			{
+				arregloGastoIngreso.add(lista.get(i));
+			}
+		}
+		return arregloGastoIngreso;
 		
 	}
 
