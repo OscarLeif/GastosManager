@@ -9,21 +9,19 @@ import android.widget.TextView;
 
 import com.example.gastosManager.R;
 
-public class DummySectionFragment extends Fragment
-{
+public class DummySectionFragment extends Fragment {
 
-    public static final String ARG_SECTION_NUMBER = "section_number";
+	public static final String ARG_SECTION_NUMBER = "section_number";
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-	    Bundle savedInstanceState)
-    {
-	View rootView = inflater.inflate(R.layout.fragment_section_dummy,
-		container, false);
-	Bundle args = getArguments();
-	((TextView) rootView.findViewById(android.R.id.text1))
-		.setText(getString(R.string.title_activity_usuario_datos_,
-			args.getInt(ARG_SECTION_NUMBER)));
-	return rootView;
-    }
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View rootView = inflater.inflate(R.layout.fragment_section_dummy,
+				container, false);
+		Bundle args = getArguments();
+		((TextView) rootView.findViewById(android.R.id.text1))
+				.setText(getString(R.string.title_activity_usuario_datos_,
+						args.getInt(ARG_SECTION_NUMBER)));
+		return rootView;
+	}
 }

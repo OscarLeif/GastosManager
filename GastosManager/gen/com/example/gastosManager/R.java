@@ -26,9 +26,8 @@ public final class R {
     }
     public static final class id {
         public static final int FechaNacimiento=0x7f080006;
-        public static final int acerca=0x7f08001c;
         public static final int action_settings=0x7f080019;
-        public static final int borrarActual=0x7f08001e;
+        public static final int borrarActual=0x7f08001d;
         public static final int botonAgregar=0x7f080016;
         public static final int botonAgregarUsuario=0x7f080007;
         public static final int botonCancelar=0x7f080018;
@@ -49,7 +48,7 @@ public final class R {
         public static final int linearLayout1=0x7f08000e;
         public static final int linearLayout2=0x7f08000a;
         public static final int listaGastos=0x7f080014;
-        public static final int menuAgregar=0x7f08001d;
+        public static final int menuAgregar=0x7f08001c;
         public static final int pager=0x7f080011;
         public static final int textView1=0x7f080009;
         public static final int textView2=0x7f080001;
@@ -58,7 +57,7 @@ public final class R {
         public static final int txtSeleccioneUsuario=0x7f080000;
     }
     public static final class layout {
-        public static final int acerca_de_gastosmanager=0x7f030000;
+        public static final int acerca_de_insos=0x7f030000;
         public static final int activity_collection_demo=0x7f030001;
         public static final int activity_register=0x7f030002;
         public static final int activity_registro__nuevo_gasto=0x7f030003;

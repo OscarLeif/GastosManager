@@ -1,17 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <item
-        android:id="@+id/acerca"
+      <item
+        android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:showAsAction="never"
-        android:title="acerca de GM"/>
-    <item
-        android:id="@+id/menuAgregar"
-        android:title="@string/botonAgregar">
-    </item>
-    <item
-        android:id="@+id/borrarActual"
-        android:title="Borrar Seleccionado">
-    </item>
+        android:title="@string/action_settings"/>
+    <item android:id="@+id/menuAgregar" android:title="@string/botonAgregar"></item>
+    <item android:id="@+id/borrarActual" android:title="Borrar Seleccionado"></item>
 
 </menu>

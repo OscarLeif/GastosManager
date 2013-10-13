@@ -34,13 +34,14 @@
             android:text="Concepto"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <EditText
+                <EditText
             android:id="@+id/editTextConcepto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:ems="10" 
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -63,8 +64,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:ems="10" 
+            />
     </LinearLayout>
 
     <LinearLayout
