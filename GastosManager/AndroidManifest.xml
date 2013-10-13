@@ -4,7 +4,9 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk android:targetSdkVersion="15" android:minSdkVersion="9"/>
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="15" />
 
     <application
         android:allowBackup="true"
@@ -38,6 +40,10 @@
         <activity
             android:name="com.example.gastosManager.Registro_NuevoGasto"
             android:label="@string/title_activity_registro__nuevo_gasto" >
+        </activity>
+        <activity
+            android:name="com.example.gastosManager.IngresoSectionFragment"
+            android:label="@string/title_activity_registro__nuevo_ingreso" >
         </activity>
     </application>
 

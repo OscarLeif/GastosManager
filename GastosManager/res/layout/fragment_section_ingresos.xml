@@ -1,6 +1,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    tools:context=".IngresoSectionFragment" >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,11 +17,11 @@
             android:orientation="horizontal" >
 
             <Button
-                android:id="@+id/botonNuevoGasto"
+                android:id="@+id/botonNuevoIngreso"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Nuevo gasto" />
+                android:text="Nuevo ingreso" />
         </LinearLayout>
 
         <LinearLayout
@@ -38,7 +40,6 @@
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/linearLayout1"
             android:layout_weight="1" >
-
         </ListView>
     </RelativeLayout>
 

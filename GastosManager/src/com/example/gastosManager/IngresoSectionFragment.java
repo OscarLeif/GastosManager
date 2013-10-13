@@ -5,6 +5,7 @@ import java.util.List;
 
 import Database.UsersDataSource;
 import android.content.Intent;
+import android.hardware.Camera.Area;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,7 +16,7 @@ import android.widget.ListView;
 
 import com.gastosManager.logica.GastoIngreso;
 
-public class GastosSectionFragment extends Fragment
+public class IngresoSectionFragment extends Fragment
 {
 
     private long user_id;
@@ -23,12 +24,14 @@ public class GastosSectionFragment extends Fragment
     private ListView lista;
     private static long idStatico;
     private Bundle savedInstanceState;
+    private ArrayList<GastoIngreso> arregloG;
+    private ArrayList<GastoIngreso> arregloIngresos;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	    Bundle savedInstanceState)
     {
-	View rootView = inflater.inflate(R.layout.fragment_section_gastos,
+	View rootView = inflater.inflate(R.layout.fragment_section_ingresos,
 		container, false);
 
 	if (savedInstanceState != null)
@@ -52,79 +55,38 @@ public class GastosSectionFragment extends Fragment
 	ArrayList<GastoIngreso> arregloG = new ArrayList<GastoIngreso>();
 
 	arregloG = sacarElementosDeUsuarioIngresos(values);
+	
 	ArrayAdapter<GastoIngreso> adapter = new ArrayAdapter<GastoIngreso>(
 		getActivity(), android.R.layout.simple_list_item_1, arregloG);
 	lista.setAdapter(adapter);
 
-	// Demonstration of a collection-browsing activity.
-	rootView.findViewById(R.id.botonNuevoGasto).setOnClickListener(
+	rootView.findViewById(R.id.botonNuevoIngreso).setOnClickListener(
 		new View.OnClickListener()
 		{
 		    @Override
 		    public void onClick(View view)
 		    {
-			Intent intent = new Intent(getActivity(),Registro_NuevoGasto.class);
+			Intent intent = new Intent(getActivity(),
+				Registro_NuevoGasto.class);
 			intent.putExtra("key", user_id);
-			intent.putExtra("GastoIngreso", "gasto");
+			intent.putExtra("GastoIngreso", "ingreso");
 			startActivity(intent);
 			System.out
-				.println("el boton nuevo Gasto funciona correctamente");
+				.println("el boton nuevo ingreso funciona correctamente");
 		    }
 		});
 
 	return rootView;
     }
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState)
-    {
-	// TODO Auto-generated method stub
-	super.onActivityCreated(savedInstanceState);
-    }
-
-    @Override
-    public void onResume()
-    {
-	// TODO Auto-generated method stub
-	super.onResume();
-	datasource = new UsersDataSource(getActivity());
-	datasource.open();
-
-	// use the SimpleCursorAdapter to show the
-	// elements in a ListView
-	List<GastoIngreso> values = datasource.darTodosLosGastoIngreso();
-	ArrayList<GastoIngreso> arregloG = new ArrayList<GastoIngreso>();
-
-	arregloG = sacarElementosDeUsuarioIngresos(values);
-	ArrayAdapter<GastoIngreso> adapter = new ArrayAdapter<GastoIngreso>(
-		getActivity(), android.R.layout.simple_list_item_1, arregloG);
-	lista.setAdapter(adapter);
-    }
-
-    /**
-     * Definitivamente este metodo no funciona en los fragements activities.
-     * 
-     * @param v
-     */
-    public void btnNuevoGasto(View v)
-    {
-	System.out.println("El boton nuevo Gasto funciona");
-
-    }
-
-    public long darUserID(long userKey)
-    {
-	// TODO Auto-generated method stub
-	return user_id = userKey;
-    }
-
-    public ArrayList<GastoIngreso> sacarElementosDeUsuarioIngresos(List<GastoIngreso> lista)
+    public ArrayList<GastoIngreso> sacarElementosDeUsuarioIngresos(
+	    List<GastoIngreso> lista)
     {
 	ArrayList<GastoIngreso> arregloGastoIngreso = new ArrayList<GastoIngreso>();
 	ArrayList<GastoIngreso> arregloIngresos = new ArrayList<GastoIngreso>();
 	for (int i = 0; i < lista.size(); i++)
 	{
-	    if (lista.get(i).getId_usuario() == idStatico + 1 && lista.get(i).getIngresoGasto().toString().length() == 5)
+	    if (lista.get(i).getId_usuario() == idStatico + 1 && lista.get(i).getIngresoGasto().toString().length() == 7)
 	    {
 		arregloGastoIngreso.add(lista.get(i));
 	    }
@@ -134,6 +96,26 @@ public class GastosSectionFragment extends Fragment
 	// base de datos
 	return arregloGastoIngreso;
 
+    }
+
+    public ArrayList<GastoIngreso> darIngresos(ArrayList<GastoIngreso> array)
+    {
+	ArrayList<GastoIngreso> tmp = new ArrayList<GastoIngreso>();
+	for (int j = 0; j < array.size(); j++)
+	{
+	    System.out.println( array.get(j).getIngresoGasto() + " Eso es un gastoIngreso");
+	    if (array.get(j).getIngresoGasto().toString() == "gasto")
+	    {
+		tmp.add(array.get(j));
+	    }
+	}
+	return tmp;
+    }
+
+    public long darUserID(long userKey)
+    {
+	// TODO Auto-generated method stub
+	return user_id = userKey;
     }
 
 }

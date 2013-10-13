@@ -24,7 +24,8 @@
         <ListView
             android:id="@+id/listaGastos"
             android:layout_width="match_parent"
-            android:layout_height="191dp" >
+            android:layout_height="191dp" 
+            android:layoutAnimation="@layout/layout_buttom_top_slide">
         </ListView>
     </LinearLayout>
 
@@ -42,12 +43,11 @@
 
         <Button
             android:id="@+id/botonAgregar"
-            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="botonAgregar"
-            android:text="@string/agregar" />
+            android:text="Agregar" />
     </LinearLayout>
 
 </LinearLayout>

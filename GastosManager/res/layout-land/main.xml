@@ -17,7 +17,7 @@
         android:text="Selecciona tu usuario"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="@dimen/Titulos" />
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="103dp" >
@@ -25,10 +25,10 @@
         <ListView
             android:id="@+id/listaGastos"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
+            android:layout_height="wrap_content"
+            android:layoutAnimation="@layout/layout_buttom_top_slide">
+             >
         </ListView>
-
     </LinearLayout>
 
     <LinearLayout
@@ -41,8 +41,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Aceptar" 
-            android:onClick="botonOK"/>
+            android:onClick="botonOK"
+            android:text="Aceptar" />
 
         <Button
             android:id="@+id/botonAgregar"
@@ -50,8 +50,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/botonAgregar" 
-            android:onClick="botonAgregar"/>
+            android:onClick="botonAgregar"
+            android:text="@string/botonAgregar" />
     </LinearLayout>
 
 </LinearLayout>

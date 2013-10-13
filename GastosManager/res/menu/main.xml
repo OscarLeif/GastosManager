@@ -7,5 +7,6 @@
         android:title="@string/action_settings"/>
     <item android:id="@+id/menuAgregar" android:title="@string/botonAgregar"></item>
     <item android:id="@+id/borrarActual" android:title="Borrar Seleccionado"></item>
+    <item android:id="@+id/AcercaDeGM" android:title="acerca de GM"></item>
 
 </menu>
