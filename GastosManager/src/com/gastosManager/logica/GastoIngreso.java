@@ -79,8 +79,8 @@ public class GastoIngreso
     public String toString()
     {
 	// TODO Auto-generated method stub
-	return "Usuario ID: " + id_usuario + " " + concepto + ": Valor: "
-		+ valor + "Gasto&Ingreso: "+ getIngresoGasto();
+	return "Usuario ID: " + id_usuario + " " + concepto + " : Valor: "
+		+ valor;
     }
 
 }

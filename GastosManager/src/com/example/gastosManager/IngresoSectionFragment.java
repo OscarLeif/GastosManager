@@ -78,6 +78,25 @@ public class IngresoSectionFragment extends Fragment
 
 	return rootView;
     }
+    
+    @Override
+    public void onResume()
+    {
+        // TODO Auto-generated method stub
+	super.onResume();
+	datasource = new UsersDataSource(getActivity());
+	datasource.open();
+
+	// use the SimpleCursorAdapter to show the
+	// elements in a ListView
+	List<GastoIngreso> values = datasource.darTodosLosGastoIngreso();
+	ArrayList<GastoIngreso> arregloG = new ArrayList<GastoIngreso>();
+
+	arregloG = sacarElementosDeUsuarioIngresos(values);
+	ArrayAdapter<GastoIngreso> adapter = new ArrayAdapter<GastoIngreso>(
+		getActivity(), android.R.layout.simple_list_item_1, arregloG);
+	lista.setAdapter(adapter);
+    }
 
     public ArrayList<GastoIngreso> sacarElementosDeUsuarioIngresos(
 	    List<GastoIngreso> lista)
