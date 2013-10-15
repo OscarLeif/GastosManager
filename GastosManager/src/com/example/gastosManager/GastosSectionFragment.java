@@ -63,7 +63,7 @@ public class GastosSectionFragment extends Fragment
 		    @Override
 		    public void onClick(View view)
 		    {
-			Intent intent = new Intent(getActivity(),Registro_NuevoGasto.class);
+			Intent intent = new Intent(getActivity(),Registro_NuevoGastoIngreso.class);
 			intent.putExtra("key", user_id);
 			intent.putExtra("GastoIngreso", "gasto");
 			startActivity(intent);

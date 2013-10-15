@@ -67,7 +67,7 @@ public class IngresoSectionFragment extends Fragment
 		    public void onClick(View view)
 		    {
 			Intent intent = new Intent(getActivity(),
-				Registro_NuevoGasto.class);
+				Registro_NuevoGastoIngreso.class);
 			intent.putExtra("key", user_id);
 			intent.putExtra("GastoIngreso", "ingreso");
 			startActivity(intent);
@@ -86,6 +86,17 @@ public class IngresoSectionFragment extends Fragment
 	super.onResume();
 	datasource = new UsersDataSource(getActivity());
 	datasource.open();
+	
+	if (savedInstanceState != null)
+	{
+	    this.savedInstanceState = savedInstanceState;
+	    savedInstanceState.putInt("userKey", (int) idStatico);
+	    idStatico = savedInstanceState.getInt("userKey");
+	}
+	if (savedInstanceState == null)
+	{
+	    idStatico = darUserID(user_id);
+	}
 
 	// use the SimpleCursorAdapter to show the
 	// elements in a ListView

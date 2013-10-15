@@ -1,9 +1,13 @@
 package com.example.gastosManager;
 
 import java.sql.Date;
+
 /**
- * Esta es la clase que registra un nuevo gasto 
- */
+ * Esta es la clase que registra un nuevo gasto o, nuevo ingreso.
+ * Dependiendo de donde se mande la orden esteasignara un gasto o un ingreso.
+ * esta clase primero recogera la informacion pasada, que son un ID de la base de datos 
+ * y la palabra ingreso o gasto, por que esto definira que es lo que hara.
+ *  */
 
 import Database.UsersDataSource;
 import android.app.Activity;
@@ -16,7 +20,7 @@ import android.widget.TextView;
 import com.example.gastosManager.R.id;
 import com.gastosManager.logica.GastoIngreso;
 
-public class Registro_NuevoGasto extends Activity
+public class Registro_NuevoGastoIngreso extends Activity
 {
     private long user_id1;
     private UsersDataSource datasource;
