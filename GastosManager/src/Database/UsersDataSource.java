@@ -8,12 +8,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.gastosManager.logica.GastoIngreso;
 
 public class UsersDataSource
 {
-
+    private String TAG = "Clase UsersDataSource";
     private SQLiteDatabase database;
     private MySQLiteHelper dbHelper;
     private String[] allColumns_tableUsers = { MySQLiteHelper.USUARIO_ID,
@@ -41,10 +42,11 @@ public class UsersDataSource
 
     /**
      * Agrega un nuevo usuario, a la base de datos dentro de la tabla usuarios.
-     * Al agregar se le asigna un ID automatico
+     * Al agregar se le asigna un ID automatico, ademas aqui dentro creamos un nuevo.
+     * Usuario, y se guarda en la base de datos
      * 
      * @param nombre
-     * @return
+     * @return un nuevoUsuario que anteriormente se agrego a la base de datos.
      */
 
     public Usuario agregarUsuario(String nombre)
@@ -60,6 +62,7 @@ public class UsersDataSource
 	cursor.moveToFirst();
 	Usuario newUsuario = cursorToUsuario(cursor);
 	cursor.close();
+	Log.d(TAG, " : agregado nuevo usuario, " + newUsuario.getNombre() );
 	return newUsuario;
 
     }
@@ -127,7 +130,7 @@ public class UsersDataSource
 	List<GastoIngreso> listaGastosIngresos = new ArrayList<GastoIngreso>();
 	String selectQuery = "select  * from "
 		+ MySQLiteHelper.TABLE_INGRESOS_Y_GASTOS;
-	System.out.println("Select Querry: " + selectQuery);
+	// System.out.println("Select Querry: " + selectQuery);
 
 	Cursor c = database.rawQuery(selectQuery, null);
 
@@ -154,12 +157,12 @@ public class UsersDataSource
 	return listaGastosIngresos;
     }
 
-    public List<GastoIngreso> darTodosLosGastoIngresoPorUsuario()
+    public List<GastoIngreso> darTodosLosGastoIngresoPorUsuario(long userID)
     {
 	return null;
 
     }
-    
+
     public List<GastoIngreso> darIngresosPorUsuario(long userID)
     {
 	return null;
