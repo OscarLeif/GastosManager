@@ -33,7 +33,7 @@
         </LinearLayout>
 
         <ListView
-            android:id="@+id/listaGastos"
+            android:id="@+id/listaUsuarios"
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:layout_alignParentBottom="true"

@@ -1,4 +1,4 @@
-package com.gastosManager.logica;
+package Database;
 
 import java.sql.Date;
 

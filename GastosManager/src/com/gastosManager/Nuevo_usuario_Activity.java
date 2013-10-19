@@ -80,10 +80,4 @@ public class Nuevo_usuario_Activity extends Activity
 	System.out.println("Here buddy now I'm working :D");
 	finish();
     }
-
-    public void botonExtra(View v)
-    {
-	Log.d("Boton extra", " Activado");
-    }
-
 }

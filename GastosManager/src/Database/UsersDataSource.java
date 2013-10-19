@@ -10,7 +10,6 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.gastosManager.logica.GastoIngreso;
 
 public class UsersDataSource
 {

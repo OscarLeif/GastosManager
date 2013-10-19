@@ -7,12 +7,14 @@ import Database.Usuario;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -33,14 +35,35 @@ public class MainActivity extends Activity
 	datasource = new UsersDataSource(this);
 	datasource.open();
 
-	final ListView lista = (ListView) findViewById(R.id.listaGastos);
+	final ListView lista = (ListView) findViewById(R.id.listaUsuarios);
 	// use the SimpleCursorAdapter to show the
 	// elements in a ListView
+	lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+
+          Cursor o =(Cursor) lista.getItemAtPosition(position);
+          //cargaGestionCuenta(o.getString(o.getColumnIndex("_id")),o.getString(o.getColumnIndex("desCuenta")));
+          
+          Log.d("Metodo activado nuevamente: ","pulsado");
+         
+        }
+      });//De la siguiente linea se crea el evento largo clic.
+	lista.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+		@Override
+		public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+				int arg2, long arg3) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+	});
 	List<Usuario> values = datasource.darTodosLosUsuario();
 	ArrayAdapter<Usuario> adapter = new ArrayAdapter<Usuario>(this,
 		android.R.layout.simple_list_item_1, values);
 	lista.setAdapter(adapter);
 	indiceLista();
+	
+	
 
     }
 
@@ -50,7 +73,7 @@ public class MainActivity extends Activity
 	// TODO Auto-generated method stub
 	super.onResume();
 	datasource.open();
-	ListView lista = (ListView) findViewById(R.id.listaGastos);
+	ListView lista = (ListView) findViewById(R.id.listaUsuarios);
 	// use the SimpleCursorAdapter to show the
 	// elements in a ListView
 	List<Usuario> values = datasource.darTodosLosUsuario();
@@ -97,7 +120,7 @@ public class MainActivity extends Activity
 	case R.id.borrarActual:
 
 	    datasource.open();
-	    ListView lista = (ListView) findViewById(R.id.listaGastos);
+	    ListView lista = (ListView) findViewById(R.id.listaUsuarios);
 	    // use the SimpleCursorAdapter to show the
 	    // elements in a ListView
 	    List<Usuario> values = datasource.darTodosLosUsuario();
@@ -172,7 +195,7 @@ public class MainActivity extends Activity
 
     public void indiceLista()
     {
-	ListView listaCuentas = (ListView) findViewById(R.id.listaGastos);
+	ListView listaCuentas = (ListView) findViewById(R.id.listaUsuarios);
 	listaCuentas.setClickable(true);
 	listaCuentas
 		.setOnItemClickListener(new AdapterView.OnItemClickListener()

@@ -3,6 +3,7 @@ package com.example.gastosManager;
 import java.util.ArrayList;
 import java.util.List;
 
+import Database.GastoIngreso;
 import Database.UsersDataSource;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.gastosManager.logica.GastoIngreso;
 
 public class GastosSectionFragment extends Fragment
 {
@@ -42,7 +42,7 @@ public class GastosSectionFragment extends Fragment
 	    idStatico = darUserID(user_id);
 	}
 
-	lista = (ListView) rootView.findViewById(R.id.listaGastos);
+	lista = (ListView) rootView.findViewById(R.id.listaUsuarios);
 	datasource = new UsersDataSource(getActivity());
 	datasource.open();
 

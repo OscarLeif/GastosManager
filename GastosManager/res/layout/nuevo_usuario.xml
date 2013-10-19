@@ -25,13 +25,6 @@
             android:inputType="textPersonName" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/botonExtra"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="botonExtra"
-        android:text="extra" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

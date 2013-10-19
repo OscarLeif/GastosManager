@@ -9,6 +9,7 @@ import java.sql.Date;
  * y la palabra ingreso o gasto, por que esto definira que es lo que hara.
  *  */
 
+import Database.GastoIngreso;
 import Database.UsersDataSource;
 import android.app.Activity;
 import android.os.Bundle;
@@ -18,7 +19,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.gastosManager.R.id;
-import com.gastosManager.logica.GastoIngreso;
 
 public class Registro_NuevoGastoIngreso extends Activity
 {
