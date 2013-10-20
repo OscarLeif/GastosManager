@@ -91,4 +91,6 @@ public class Registro_NuevoGastoIngreso extends Activity
 	return true;
     }
 
+    
+
 }

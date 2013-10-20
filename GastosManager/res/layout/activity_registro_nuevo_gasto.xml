@@ -91,31 +91,26 @@
             android:text="Cancelar" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/linearLayout3"
-        android:layout_centerVertical="true"
-        android:text="Asigna una fecha"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_alignRight="@+id/linearLayout3"
+        android:layout_below="@+id/linearLayout3"
+        android:orientation="vertical" >
 
-    <DatePicker
-        android:id="@+id/datePicker1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="26dp" />
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Asigna una fecha"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/datePicker1"
-        android:layout_below="@+id/datePicker1"
-        android:layout_marginTop="35dp"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        <DatePicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:calendarViewShown="false" />
+    </LinearLayout>
 
 </RelativeLayout>

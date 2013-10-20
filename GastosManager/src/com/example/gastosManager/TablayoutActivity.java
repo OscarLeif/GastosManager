@@ -13,6 +13,7 @@ import android.view.Menu;
 
 import com.example.gastosManager.R;
 
+
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class TablayoutActivity extends FragmentActivity implements
 	ActionBar.TabListener
@@ -20,7 +21,7 @@ public class TablayoutActivity extends FragmentActivity implements
     private int position;
     ViewPager mViewPager;
     AppSectionsPagerAdapter mAppSectionsPagerAdapter;
-
+    
     @SuppressLint("NewApi")
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
