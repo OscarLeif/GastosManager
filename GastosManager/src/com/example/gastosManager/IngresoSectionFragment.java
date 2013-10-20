@@ -1,19 +1,29 @@
 package com.example.gastosManager;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 import Database.GastoIngreso;
 import Database.UsersDataSource;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.hardware.Camera.Area;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.sax.RootElement;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView.FindListener;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 public class IngresoSectionFragment extends Fragment
@@ -51,7 +61,7 @@ public class IngresoSectionFragment extends Fragment
 
 	// use the SimpleCursorAdapter to show the
 	// elements in a ListView
-	List<GastoIngreso> values = datasource.darTodosLosGastoIngreso();
+	final List<GastoIngreso> values = datasource.darTodosLosGastoIngreso();
 	ArrayList<GastoIngreso> arregloG = new ArrayList<GastoIngreso>();
 
 	arregloG = sacarElementosDeUsuarioIngresos(values);
@@ -59,6 +69,30 @@ public class IngresoSectionFragment extends Fragment
 	ArrayAdapter<GastoIngreso> adapter = new ArrayAdapter<GastoIngreso>(
 		getActivity(), android.R.layout.simple_list_item_1, arregloG);
 	lista.setAdapter(adapter);
+	
+	lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+	        public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+
+	          //Cursor o =(Cursor) lista.getItemAtPosition(position);
+	          //cargaGestionCuenta(o.getString(o.getColumnIndex("_id")),o.getString(o.getColumnIndex("desCuenta")));
+	          Log.d("Pulsado item: ", String.valueOf(position));
+	          //Mostramos la informacion del ingreso en buen detalle.
+	          Dialog d = new Dialog(getActivity());
+	          d.setContentView(R.layout.dialog_informacion_gasto_ingreso);
+	          d.setTitle("Informacion del Ingreso");
+	          //Necesitamos la informacion de esta lista
+	          TextView t =(TextView) d.findViewById(R.id.textView1);
+	          
+	          
+	          ArrayList<GastoIngreso> tmp = sacarElementosDeUsuarioIngresos(values);
+	          GastoIngreso ingreso = tmp.get(position);
+	          t.setText("Estamos funcionando");
+	          System.out.println(t.getText());
+	          //Log.d("Metodo activado nuevamente: ","pulsado");
+	         d.show();
+	        }
+	      });
+	
 
 	rootView.findViewById(R.id.botonNuevoIngreso).setOnClickListener(
 		new View.OnClickListener()
@@ -147,5 +181,6 @@ public class IngresoSectionFragment extends Fragment
 	// TODO Auto-generated method stub
 	return user_id = userKey;
     }
+
 
 }
