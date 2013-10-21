@@ -21,14 +21,16 @@
             android:layout_height="fill_parent"
             android:layout_marginTop="22dp"
             android:text="Concepto:"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/editTextConcepto"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:ems="10"
-            android:inputType="textPersonName" >
+            android:inputType="textPersonName"
+            android:textSize="15sp" >
 
             <requestFocus />
         </EditText>
@@ -48,14 +50,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Valor:       "
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/editTextValor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textSize="15sp" />
 
     </LinearLayout>
 
@@ -73,7 +77,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Asigna una fecha"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="15sp" />
 
         <DatePicker
             android:layout_width="wrap_content"
@@ -112,6 +117,7 @@
         android:layout_alignLeft="@+id/linearLayout1"
         android:layout_alignParentTop="true"
         android:text="Ingresa la informacion del gasto"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp" />
 
 </RelativeLayout>
