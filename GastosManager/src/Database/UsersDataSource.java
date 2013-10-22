@@ -10,7 +10,6 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-
 public class UsersDataSource
 {
     private String TAG = "Clase UsersDataSource";
@@ -41,8 +40,8 @@ public class UsersDataSource
 
     /**
      * Agrega un nuevo usuario, a la base de datos dentro de la tabla usuarios.
-     * Al agregar se le asigna un ID automatico, ademas aqui dentro creamos un nuevo.
-     * Usuario, y se guarda en la base de datos
+     * Al agregar se le asigna un ID automatico, ademas aqui dentro creamos un
+     * nuevo. Usuario, y se guarda en la base de datos
      * 
      * @param nombre
      * @return un nuevoUsuario que anteriormente se agrego a la base de datos.
@@ -61,7 +60,7 @@ public class UsersDataSource
 	cursor.moveToFirst();
 	Usuario newUsuario = cursorToUsuario(cursor);
 	cursor.close();
-	Log.d(TAG, " : agregado nuevo usuario, " + newUsuario.getNombre() );
+	Log.d(TAG, " : agregado nuevo usuario, " + newUsuario.getNombre());
 	return newUsuario;
 
     }
@@ -143,7 +142,7 @@ public class UsersDataSource
 			.getColumnIndex(MySQLiteHelper.USUARIO_ID)));
 		ig.setConcepto(c.getString(c
 			.getColumnIndex(MySQLiteHelper.CONCEPTO)));
-		// ig.setFecha(c.get))
+		ig.setFecha(c.getString(c.getColumnIndex(MySQLiteHelper.FECHA)));
 		ig.setIngresoGasto(c.getString(c
 			.getColumnIndex(MySQLiteHelper.INGRESO_GASTO)));
 		ig.setValor(c.getInt(c.getColumnIndex(MySQLiteHelper.VALOR)));
@@ -181,7 +180,7 @@ public class UsersDataSource
 	GastoIngreso gastoIngreso = new GastoIngreso();
 	gastoIngreso.setId_usuario(cursor.getLong(0));
 	gastoIngreso.setConcepto(cursor.getString(1));
-	gastoIngreso.setFecha(cursor.getInt(2));
+	gastoIngreso.setFecha(cursor.getString(2));
 	gastoIngreso.setIngresoGasto(cursor.getString(3));
 	gastoIngreso.setValor(cursor.getInt(4));
 	gastoIngreso.setId_usuario(cursor.getLong(5));

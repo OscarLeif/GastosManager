@@ -41,7 +41,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper
 	    + CONCEPTO
 	    + " text not null, "
 	    + FECHA
-	    + " date, "
+	    + " DATETIME, "
 	    + INGRESO_GASTO
 	    + " text not null, "
 	    + VALOR

@@ -6,7 +6,7 @@ public class GastoIngreso
 {
     private int IG_PK;
     private String concepto;
-    private int fecha;
+    private String fecha;
     private String ingresoGasto;
     private int valor;
     private long id_usuario;
@@ -35,12 +35,12 @@ public class GastoIngreso
 	this.concepto = concepto;
     }
 
-    public int getFecha()
+    public String getFecha()
     {
 	return fecha;
     }
 
-    public void setFecha(int fecha)
+    public void setFecha(String fecha)
     {
 	this.fecha = fecha;
     }
@@ -80,7 +80,7 @@ public class GastoIngreso
     {
 	// TODO Auto-generated method stub
 	return "Usuario ID: " + id_usuario + " " + concepto + " : Valor: "
-		+ valor;
+		+ valor + "Fecha: " + getFecha();
     }
 
 }
