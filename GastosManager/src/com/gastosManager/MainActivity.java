@@ -4,6 +4,7 @@ import java.util.List;
 
 import Database.UsersDataSource;
 import Database.Usuario;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -11,12 +12,14 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 
 import com.example.gastosManager.R;
 import com.example.gastosManager.TablayoutActivity;
@@ -38,35 +41,48 @@ public class MainActivity extends Activity
 	final ListView lista = (ListView) findViewById(R.id.listaUsuarios);
 	// use the SimpleCursorAdapter to show the
 	// elements in a ListView
-	lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-        public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+	lista.setOnItemClickListener(new AdapterView.OnItemClickListener()
+	{
+	    public void onItemClick(AdapterView<?> arg0, View arg1,
+		    int position, long arg3)
+	    {
 
-          Cursor o =(Cursor) lista.getItemAtPosition(position);
-          //cargaGestionCuenta(o.getString(o.getColumnIndex("_id")),o.getString(o.getColumnIndex("desCuenta")));
-          
-          Log.d("Metodo activado nuevamente: ","pulsado");
-         
-        }
-      });//De la siguiente linea se crea el evento largo clic.
-	lista.setOnItemLongClickListener(new OnItemLongClickListener() {
+		Cursor o = (Cursor) lista.getItemAtPosition(position);
+		// cargaGestionCuenta(o.getString(o.getColumnIndex("_id")),o.getString(o.getColumnIndex("desCuenta")));
+		botonOK(arg0);
+		Log.d("Metodo activado nuevamente: ", "pulsado");
 
-		@Override
-		public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-				int arg2, long arg3) {
-			// TODO Auto-generated method stub
-		    System.out.println("Long Click working");
-			return false;
-		}
+	    }
+	});// De la siguiente linea se crea el evento largo clic.
+	lista.setOnItemLongClickListener(new OnItemLongClickListener()
+	{
+
+	    @Override
+	    public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+		    int arg2, long arg3)
+	    {
+		// TODO Auto-generated method stub
+		System.out.println("Long Click working");
+		showPopup(arg1);
+
+		return false;
+	    }
 	});
 	List<Usuario> values = datasource.darTodosLosUsuario();
 	ArrayAdapter<Usuario> adapter = new ArrayAdapter<Usuario>(this,
 		android.R.layout.simple_list_item_1, values);
 	lista.setAdapter(adapter);
 	indiceLista();
-	
-	
 
     }
+    
+    @SuppressLint("NewApi")
+    public void showPopup(View v) {
+	    PopupMenu popup = new PopupMenu(this, v);
+	    MenuInflater inflater = popup.getMenuInflater();
+	    inflater.inflate(R.menu.context_menu, popup.getMenu());
+	    popup.show();
+	}
 
     @Override
     protected void onResume()
@@ -212,6 +228,7 @@ public class MainActivity extends Activity
 			String numero = Integer.toString(position);
 			Log.d("Pulsado item numero: ", numero);
 			posicionListView = position;
+			botonOK(arg1);
 
 		    }
 		});

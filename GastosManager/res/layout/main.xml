@@ -24,8 +24,9 @@
         <ListView
             android:id="@+id/listaUsuarios"
             android:layout_width="match_parent"
-            android:layout_height="191dp" 
-            android:layoutAnimation="@layout/layout_buttom_top_slide">
+            android:layout_height="349dp"
+            android:layoutAnimation="@layout/layout_buttom_top_slide" >
+
         </ListView>
     </LinearLayout>
 
@@ -39,7 +40,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="botonOK"
-            android:text="Aceptar" />
+            android:text="Aceptar" 
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/botonAgregar"
@@ -47,7 +49,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="botonAgregar"
-            android:text="Agregar" />
+            android:text="Agregar" 
+            android:visibility="gone"/>
     </LinearLayout>
 
 </LinearLayout>

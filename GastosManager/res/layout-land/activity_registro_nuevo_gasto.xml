@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:orientation="vertical" >
+    android:orientation="horizontal" >
 
     <TableLayout
         android:layout_width="fill_parent"
@@ -13,16 +13,16 @@
         <TextView
             android:id="@+id/textViewGastoIngreso"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_alignLeft="@+id/linearLayout1"
             android:layout_alignParentTop="true"
+            android:layout_weight="1"
             android:text="Ingresa la informacion del gasto"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            />
+            android:textSize="20sp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="horizontal" >
 
             <TextView
@@ -31,8 +31,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="22dp"
                 android:text="Concepto:"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="18sp" />
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
                 android:id="@+id/editTextConcepto"
@@ -44,7 +43,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="horizontal" >
 
             <TextView
@@ -53,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:text="Valor:         "
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="18sp" />
+                android:textSize="15sp" />
 
             <EditText
                 android:id="@+id/editTextValor"
@@ -66,12 +65,12 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_above="@+id/linearLayout1"
             android:layout_alignLeft="@+id/linearLayout3"
             android:layout_alignRight="@+id/linearLayout3"
             android:layout_below="@+id/linearLayout3"
-            android:layout_weight="0.36"
+            android:layout_weight="1"
             android:orientation="vertical" >
 
             <TextView
@@ -80,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:text="Asigna una fecha"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="18sp" />
+                android:textSize="15sp" />
 
             <DatePicker
                 android:layout_width="match_parent"

@@ -156,6 +156,8 @@ public class IngresoSectionFragment extends Fragment
 	          Dialog d = new Dialog(getActivity());
 	          d.setContentView(R.layout.dialog_informacion_gasto_ingreso);
 	          d.setTitle("Informacion del Ingreso");
+	          
+	          
 	          //Necesitamos la informacion de esta lista
 	          TextView t =(TextView) d.findViewById(R.id.textView1);
 	          
