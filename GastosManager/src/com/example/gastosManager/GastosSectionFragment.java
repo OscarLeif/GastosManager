@@ -5,14 +5,18 @@ import java.util.List;
 
 import Database.GastoIngreso;
 import Database.UsersDataSource;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 public class GastosSectionFragment extends Fragment
@@ -92,24 +96,47 @@ public class GastosSectionFragment extends Fragment
 
 	// use the SimpleCursorAdapter to show the
 	// elements in a ListView
-	List<GastoIngreso> values = datasource.darTodosLosGastoIngreso();
+	final List<GastoIngreso> values = datasource.darTodosLosGastoIngreso();
 	ArrayList<GastoIngreso> arregloG = new ArrayList<GastoIngreso>();
 
 	arregloG = sacarElementosDeUsuarioIngresos(values);
 	ArrayAdapter<GastoIngreso> adapter = new ArrayAdapter<GastoIngreso>(
 		getActivity(), android.R.layout.simple_list_item_1, arregloG);
 	lista.setAdapter(adapter);
-    }
+	lista.setOnItemClickListener(new AdapterView.OnItemClickListener()
+	{
+	    public void onItemClick(AdapterView<?> arg0, View arg1,
+		    int position, long arg3)
+	    {
 
-    /**
-     * Definitivamente este metodo no funciona en los fragements activities.
-     * 
-     * @param v
-     */
-    public void btnNuevoGasto(View v)
-    {
-	System.out.println("El boton nuevo Gasto funciona");
+		// Cursor o =(Cursor) lista.getItemAtPosition(position);
+		// cargaGestionCuenta(o.getString(o.getColumnIndex("_id")),o.getString(o.getColumnIndex("desCuenta")));
+		Log.d("Pulsado item: ", String.valueOf(position));
+		// Mostramos la informacion del ingreso en buen detalle.
+		Dialog d = new Dialog(getActivity());
+		d.setContentView(R.layout.dialog_informacion_gasto_ingreso);
+		d.setTitle("Informacion del Gasto");
 
+		// Necesitamos la informacion de esta lista
+		TextView t = (TextView) d.findViewById(R.id.textViewDIngresoGasto);
+		t.setText("Ingreso:");
+		TextView t1 = (TextView) d.findViewById(R.id.textViewDConcepto);
+		TextView t2 = (TextView) d.findViewById(R.id.textViewDValor);
+		TextView t3 = (TextView) d.findViewById(R.id.textViewDFecha);
+
+		ArrayList<GastoIngreso> tmp = sacarElementosDeUsuarioIngresos(values);
+		GastoIngreso ingreso = tmp.get(position);
+
+		t1.setText(ingreso.getConcepto());
+		t2.setText(String.valueOf(ingreso.getValor()));
+		t3.setText(ingreso.getFecha());
+		
+
+		System.out.println(t.getText());
+		// Log.d("Metodo activado nuevamente: ","pulsado");
+		d.show();
+	    }
+	});
     }
 
     public long darUserID(long userKey)
@@ -117,6 +144,12 @@ public class GastosSectionFragment extends Fragment
 	// TODO Auto-generated method stub
 	return user_id = userKey;
     }
+    /**
+     * Dentro de la lista original, tenemos todos los Gastos ingresos
+     * sacamos solamente los gastos
+     * @param lista
+     * @return
+     */
 
     public ArrayList<GastoIngreso> sacarElementosDeUsuarioIngresos(List<GastoIngreso> lista)
     {
