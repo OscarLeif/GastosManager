@@ -22,19 +22,21 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int background=0x7f020000;
+        public static final int background_hover=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
     }
     public static final class id {
-        public static final int AcercaDeGM=0x7f080022;
+        public static final int AcercaDeGM=0x7f080025;
         public static final int FechaNacimiento=0x7f080006;
-        public static final int action_settings=0x7f08001d;
-        public static final int borrarActual=0x7f080021;
-        public static final int botonAgregar=0x7f08001b;
+        public static final int action_settings=0x7f080020;
+        public static final int borrarActual=0x7f080024;
+        public static final int botonAgregar=0x7f08001c;
         public static final int botonAgregarUsuario=0x7f080007;
-        public static final int botonCancelar=0x7f08001c;
+        public static final int botonCancelar=0x7f08001d;
         public static final int botonFechaNacimiento=0x7f080005;
-        public static final int botonNuevoGasto=0x7f080017;
-        public static final int botonNuevoIngreso=0x7f080019;
+        public static final int botonNuevoGasto=0x7f080018;
+        public static final int botonNuevoIngreso=0x7f08001a;
         public static final int buttonCancel=0x7f080012;
         public static final int buttonOK=0x7f080011;
         public static final int datePicker1=0x7f080008;
@@ -44,12 +46,15 @@ public final class R {
         public static final int editNumeroA=0x7f080004;
         public static final int editTextConcepto=0x7f08000b;
         public static final int editTextValor=0x7f08000d;
-        public static final int item1=0x7f08001e;
-        public static final int item2=0x7f08001f;
+        public static final int icon=0x7f08001e;
+        public static final int item1=0x7f080021;
+        public static final int item2=0x7f080022;
+        public static final int label=0x7f08001f;
         public static final int linearLayout1=0x7f08000a;
         public static final int linearLayout3=0x7f08000e;
-        public static final int listaUsuarios=0x7f080018;
-        public static final int menuAgregar=0x7f080020;
+        public static final int listaUsuarios=0x7f080019;
+        public static final int lista_miscelanea=0x7f080017;
+        public static final int menuAgregar=0x7f080023;
         public static final int pager=0x7f080013;
         public static final int textView1=0x7f08000f;
         public static final int textView2=0x7f080001;
@@ -58,7 +63,7 @@ public final class R {
         public static final int textViewDIngresoGasto=0x7f08000c;
         public static final int textViewDValor=0x7f080015;
         public static final int textViewGastoIngreso=0x7f080009;
-        public static final int textViewTituloAp=0x7f08001a;
+        public static final int textViewTituloAp=0x7f08001b;
         public static final int txtSeleccioneUsuario=0x7f080000;
     }
     public static final class layout {
@@ -74,7 +79,8 @@ public final class R {
         public static final int layout_buttom_top_slide=0x7f030009;
         public static final int main=0x7f03000a;
         public static final int nuevo_usuario=0x7f03000b;
-        public static final int slide_right=0x7f03000c;
+        public static final int rowlayout=0x7f03000c;
+        public static final int slide_right=0x7f03000d;
     }
     public static final class menu {
         public static final int collection_demo=0x7f070000;

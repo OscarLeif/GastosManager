@@ -58,9 +58,6 @@ public class AppSectionsPagerAdapter extends FragmentPagerAdapter
 	default:
 	    // The other sections of the app are dummy placeholders.
 	    DummySectionFragment fragment = new DummySectionFragment();
-	    Bundle args = new Bundle();
-	    args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, i + 1);
-	    fragment.setArguments(args);
 	    return fragment;
 	}
     }

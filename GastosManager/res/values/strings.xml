@@ -9,7 +9,7 @@
     <string name="title_activity_opciones">Opciones</string>
     <string name="title_activity_tablayout">TablayoutActivity</string>
     <string name="title_activity_collection_demo">CollectionDemoActivity</string>
-    <string name="seleccione_usuario">Seleccione usuario</string>
+    <string name="seleccione_usuario">Selecciona tu usuario</string>
     <string name="cancelar">Cancelar</string>
     <string name="aceptar">Aceptar</string>
     <string name="agregar">botonAgregar</string>

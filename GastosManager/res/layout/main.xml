@@ -1,12 +1,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin" >
+    android:paddingTop="@dimen/activity_vertical_margin" 
+    android:background="@drawable/background">
 
     <TextView
         android:id="@+id/textViewTituloAp"
@@ -15,16 +16,16 @@
         android:layout_marginTop="28dp"
         android:text="@string/seleccione_usuario"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="@dimen/Titulos" />
+        android:textSize="30sp" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" >
 
         <ListView
             android:id="@+id/listaUsuarios"
-            android:layout_width="match_parent"
-            android:layout_height="349dp"
+            android:layout_width="wrap_content"
+            android:layout_height="372dp"
             android:layoutAnimation="@layout/layout_buttom_top_slide" >
 
         </ListView>
@@ -32,7 +33,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content" 
+        android:visibility="invisible">
 
         <Button
             android:id="@+id/buttonOK"

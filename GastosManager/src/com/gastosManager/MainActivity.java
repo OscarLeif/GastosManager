@@ -95,7 +95,7 @@ public class MainActivity extends Activity
 	// elements in a ListView
 	List<Usuario> values = datasource.darTodosLosUsuario();
 	ArrayAdapter<Usuario> adapter = new ArrayAdapter<Usuario>(this,
-		android.R.layout.simple_list_item_1, values);
+		R.layout.rowlayout,R.id.label, values);
 	lista.setAdapter(adapter);
 
     }
