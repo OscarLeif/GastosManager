@@ -47,9 +47,12 @@ public class MainActivity extends Activity
 		    int position, long arg3)
 	    {
 
-		Cursor o = (Cursor) lista.getItemAtPosition(position);
+		//Cursor o = (Cursor) lista.getItemAtPosition(position);
 		// cargaGestionCuenta(o.getString(o.getColumnIndex("_id")),o.getString(o.getColumnIndex("desCuenta")));
-		botonOK(arg0);
+		List<Usuario> listaUsuarios = datasource.darTodosLosUsuario();
+		Usuario tmp = listaUsuarios.get(position);
+		int user_ID = (int) tmp.getId();
+		botonOK(arg0, user_ID);
 		Log.d("Metodo activado nuevamente: ", "pulsado");
 
 	    }
@@ -194,13 +197,16 @@ public class MainActivity extends Activity
 	startActivity(intent);
     }
 
-    public void botonOK(View v)
+    public void botonOK(View v, int user_ID)
     {
 	if (posicionListView >= 0)
 	{
 	    Intent i = new Intent(this, TablayoutActivity.class);
 	    String posicionString = Integer.toString(posicionListView);
-	    i.putExtra("Position", posicionString);
+	    List<Usuario> listaUsuarios = datasource.darTodosLosUsuario();
+		Usuario tmp = listaUsuarios.get(user_ID);
+		int user_ID1 = (int) tmp.getId();
+	    i.putExtra("Position", user_ID1);
 	    startActivity(i);
 	}
 	if (posicionListView <= -1)
@@ -228,7 +234,7 @@ public class MainActivity extends Activity
 			String numero = Integer.toString(position);
 			Log.d("Pulsado item numero: ", numero);
 			posicionListView = position;
-			botonOK(arg1);
+			botonOK(arg1, position);
 
 		    }
 		});

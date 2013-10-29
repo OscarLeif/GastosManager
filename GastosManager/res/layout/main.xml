@@ -25,7 +25,7 @@
         <ListView
             android:id="@+id/listaUsuarios"
             android:layout_width="wrap_content"
-            android:layout_height="372dp"
+            android:layout_height="match_parent"
             android:layoutAnimation="@layout/layout_buttom_top_slide" >
 
         </ListView>
