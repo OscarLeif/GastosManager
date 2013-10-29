@@ -192,7 +192,7 @@ public class IngresoSectionFragment extends Fragment
 	ArrayList<GastoIngreso> arregloIngresos = new ArrayList<GastoIngreso>();
 	for (int i = 0; i < lista.size(); i++)
 	{
-	    if (lista.get(i).getId_usuario() == idStatico + 1
+	    if (lista.get(i).getId_usuario() == idStatico 
 		    && lista.get(i).getIngresoGasto().toString().length() == 7)
 	    {
 		arregloGastoIngreso.add(lista.get(i));

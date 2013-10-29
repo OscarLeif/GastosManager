@@ -129,7 +129,8 @@ public class GastosSectionFragment extends Fragment
 
 		t1.setText(ingreso.getConcepto());
 		t2.setText(String.valueOf(ingreso.getValor()));
-		t3.setText(ingreso.getFecha());
+		String fecha = ingreso.getFecha().replace("00:00:00", "");
+		t3.setText(fecha);
 		
 
 		System.out.println(t.getText());
@@ -157,7 +158,7 @@ public class GastosSectionFragment extends Fragment
 	ArrayList<GastoIngreso> arregloIngresos = new ArrayList<GastoIngreso>();
 	for (int i = 0; i < lista.size(); i++)
 	{
-	    if (lista.get(i).getId_usuario() == idStatico + 1 && lista.get(i).getIngresoGasto().toString().length() == 5)
+	    if (lista.get(i).getId_usuario() == idStatico  && lista.get(i).getIngresoGasto().toString().length() == 5)
 	    {
 		arregloGastoIngreso.add(lista.get(i));
 	    }

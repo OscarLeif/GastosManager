@@ -103,7 +103,7 @@ public class MainActivity extends Activity
 		Usuario tmp = listaUsuarios.get(position);
 		int user_ID = (int) tmp.getId();
 		crearNuevaActividadUsuario(arg0, user_ID);
-		Log.d("Metodo activado nuevamente: ", Integer.toString(user_ID) );
+		Log.d("Usuario ID: ", Integer.toString(user_ID) );
 		
 
 	    }

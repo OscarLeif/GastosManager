@@ -76,7 +76,7 @@ public class Registro_NuevoGastoIngreso extends Activity
 			gasto.setConcepto(concepto);
 			gasto.setIngresoGasto(gastoIngreso);
 			gasto.setValor(valor);
-			gasto.setId_usuario(user_id1 + 1);
+			gasto.setId_usuario(user_id1);
 			DatePicker datePicker = (DatePicker) findViewById(R.id.datePickerIngresoGasto);
 
 			String finalDateTime = "";
