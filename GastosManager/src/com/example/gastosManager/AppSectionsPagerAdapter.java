@@ -57,7 +57,7 @@ public class AppSectionsPagerAdapter extends FragmentPagerAdapter
 
 	default:
 	    // The other sections of the app are dummy placeholders.
-	    DummySectionFragment fragment = new DummySectionFragment();
+	    MiscelaneaSectionFragment fragment = new MiscelaneaSectionFragment();
 	    fragment.darUserID(userKey);
 	    return fragment;
 	}

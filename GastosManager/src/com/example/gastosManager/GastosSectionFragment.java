@@ -125,11 +125,11 @@ public class GastosSectionFragment extends Fragment
 		TextView t3 = (TextView) d.findViewById(R.id.textViewDFecha);
 
 		ArrayList<GastoIngreso> tmp = sacarElementosDeUsuarioIngresos(values);
-		GastoIngreso ingreso = tmp.get(position);
+		GastoIngreso gasto = tmp.get(position);
 
-		t1.setText(ingreso.getConcepto());
-		t2.setText(String.valueOf(ingreso.getValor()));
-		String fecha = ingreso.getFecha().replace("00:00:00", "");
+		t1.setText(gasto.getConcepto());
+		t2.setText(String.valueOf(gasto.getValor()));
+		String fecha = gasto.getFecha().replace("00:00:00", "");
 		t3.setText(fecha);
 		
 
