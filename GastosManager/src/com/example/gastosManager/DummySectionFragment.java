@@ -13,8 +13,10 @@ import android.widget.ListView;
 public class DummySectionFragment extends Fragment
 {
 
+    
     public static final String ARG_SECTION_NUMBER = "section_number";
     private ListView listaMiscelanea;
+    private long user_id;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,5 +34,11 @@ public class DummySectionFragment extends Fragment
 	listaMiscelanea.setAdapter(adapter);
 
 	return rootView;
+    }
+
+    public long darUserID(long userKey)
+    {
+	// TODO Auto-generated method stub
+	return user_id = userKey;
     }
 }

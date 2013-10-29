@@ -16,7 +16,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.AdapterViewFlipper;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.PopupMenu;
@@ -39,24 +41,13 @@ public class MainActivity extends Activity
 	datasource.open();
 
 	final ListView lista = (ListView) findViewById(R.id.listaUsuarios);
+	List<Usuario> values = datasource.darTodosLosUsuario();
+	ArrayAdapter<Usuario> adapter = new ArrayAdapter<Usuario>(this,
+		android.R.layout.simple_list_item_1, values);
+	lista.setAdapter(adapter);
 	// use the SimpleCursorAdapter to show the
 	// elements in a ListView
-	lista.setOnItemClickListener(new AdapterView.OnItemClickListener()
-	{
-	    public void onItemClick(AdapterView<?> arg0, View arg1,
-		    int position, long arg3)
-	    {
-
-		//Cursor o = (Cursor) lista.getItemAtPosition(position);
-		// cargaGestionCuenta(o.getString(o.getColumnIndex("_id")),o.getString(o.getColumnIndex("desCuenta")));
-		List<Usuario> listaUsuarios = datasource.darTodosLosUsuario();
-		Usuario tmp = listaUsuarios.get(position);
-		int user_ID = (int) tmp.getId();
-		botonOK(arg0, user_ID);
-		Log.d("Metodo activado nuevamente: ", "pulsado");
-
-	    }
-	});// De la siguiente linea se crea el evento largo clic.
+	
 	lista.setOnItemLongClickListener(new OnItemLongClickListener()
 	{
 
@@ -71,11 +62,8 @@ public class MainActivity extends Activity
 		return false;
 	    }
 	});
-	List<Usuario> values = datasource.darTodosLosUsuario();
-	ArrayAdapter<Usuario> adapter = new ArrayAdapter<Usuario>(this,
-		android.R.layout.simple_list_item_1, values);
-	lista.setAdapter(adapter);
-	indiceLista();
+	
+	
 
     }
     
@@ -86,7 +74,9 @@ public class MainActivity extends Activity
 	    inflater.inflate(R.menu.context_menu, popup.getMenu());
 	    popup.show();
 	}
-
+/**
+ * Desafortunamente aqui es donde se crea el evento del listView
+ */
     @Override
     protected void onResume()
     {
@@ -100,6 +90,24 @@ public class MainActivity extends Activity
 	ArrayAdapter<Usuario> adapter = new ArrayAdapter<Usuario>(this,
 		R.layout.rowlayout,R.id.label, values);
 	lista.setAdapter(adapter);
+	lista.setOnItemClickListener(new AdapterView.OnItemClickListener()
+	{
+	    @Override
+	    public void onItemClick(AdapterView<?> arg0, View arg1,
+		    int position, long arg3)
+	    {
+
+		//Cursor o = (Cursor) lista.getItemAtPosition(position);
+		// cargaGestionCuenta(o.getString(o.getColumnIndex("_id")),o.getString(o.getColumnIndex("desCuenta")));
+		List<Usuario> listaUsuarios = datasource.darTodosLosUsuario();
+		Usuario tmp = listaUsuarios.get(position);
+		int user_ID = (int) tmp.getId();
+		crearNuevaActividadUsuario(arg0, user_ID);
+		Log.d("Metodo activado nuevamente: ", Integer.toString(user_ID) );
+		
+
+	    }
+	});
 
     }
 
@@ -197,47 +205,28 @@ public class MainActivity extends Activity
 	startActivity(intent);
     }
 
-    public void botonOK(View v, int user_ID)
+    public void crearNuevaActividadUsuario(View v, int user_ID)
     {
-	if (posicionListView >= 0)
+	if (user_ID >= 0)
 	{
+	    datasource.open();
 	    Intent i = new Intent(this, TablayoutActivity.class);
-	    String posicionString = Integer.toString(posicionListView);
-	    List<Usuario> listaUsuarios = datasource.darTodosLosUsuario();
-		Usuario tmp = listaUsuarios.get(user_ID);
-		int user_ID1 = (int) tmp.getId();
-	    i.putExtra("Position", user_ID1);
+//	    String posicionString = Integer.toString(posicionListView);
+	    //List<Usuario> listaUsuarios = datasource.darTodosLosUsuario();
+		//Usuario tmp = listaUsuarios.get(user_ID);
+		//int user_ID1 = (int) tmp.getId();
+	    String position = Integer.toString(user_ID);
+	    i.putExtra("Position", position);
+	    datasource.close();
 	    startActivity(i);
+	    
 	}
-	if (posicionListView <= -1)
+	if (user_ID <= -1)
 	{
 	    System.out
 		    .println("El indice es negativo seguro, no hay elementos en la base de datos.");
 	}
     }
 
-    public void indiceLista()
-    {
-	ListView listaCuentas = (ListView) findViewById(R.id.listaUsuarios);
-	listaCuentas.setClickable(true);
-	listaCuentas
-		.setOnItemClickListener(new AdapterView.OnItemClickListener()
-		{
-
-		    public void onItemClick(AdapterView<?> arg0, View arg1,
-			    int position, long arg3)
-		    {
-			// Cursor o =(Cursor)
-			// listaCuentas.getItemAtPosition(position);
-			// cargaGestionCuenta(o.getString(o.getColumnIndex("_id")),o.getString(o.getColumnIndex("desCuenta")));
-			// Aqui debemos cargar los datos
-			String numero = Integer.toString(position);
-			Log.d("Pulsado item numero: ", numero);
-			posicionListView = position;
-			botonOK(arg1, position);
-
-		    }
-		});
-    }
 
 }

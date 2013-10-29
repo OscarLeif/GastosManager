@@ -36,7 +36,7 @@ public class TablayoutActivity extends FragmentActivity implements
 		getSupportFragmentManager());
 
 	Bundle extras = getIntent().getExtras();
-	String stringPos = extras.getString("Position");
+	String stringPos = extras.getString("Position");//Aqui es donde se rompe
 	position = Integer.parseInt(stringPos);
 	mAppSectionsPagerAdapter.getUserKey(position);
 

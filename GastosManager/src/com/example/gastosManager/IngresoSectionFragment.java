@@ -173,7 +173,8 @@ public class IngresoSectionFragment extends Fragment
 
 		t1.setText(ingreso.getConcepto());
 		t2.setText(String.valueOf(ingreso.getValor()));
-		t3.setText(ingreso.getFecha());
+		String fecha = ingreso.getFecha().replace("00:00:00", "");
+		t3.setText(fecha);
 		
 
 		System.out.println(t.getText());
