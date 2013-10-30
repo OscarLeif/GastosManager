@@ -37,6 +37,7 @@ public class GastoIngreso
 
     public String getFecha()
     {
+	
 	return fecha;
     }
 
@@ -47,7 +48,7 @@ public class GastoIngreso
 
     public String getIngresoGasto()
     {
-	return ingresoGasto;
+	return ingresoGasto.replace("00:00:00", "");
     }
 
     public void setIngresoGasto(String ingresoGasto)

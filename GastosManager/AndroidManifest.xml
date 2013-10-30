@@ -48,6 +48,11 @@
         <activity
             android:name="aChart.Core.XY_PlotActivityIngreso"
             android:label="@string/title_activity_xy__plot" >
+            <intent-filter>
+                <action android:name="aChart.Core.XY_PlotActivityIngreso" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 

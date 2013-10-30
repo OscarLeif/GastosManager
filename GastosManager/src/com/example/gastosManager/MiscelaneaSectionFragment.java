@@ -52,7 +52,7 @@ public class MiscelaneaSectionFragment extends Fragment
 	    public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 		    long arg3)
 	    {
-		// TODO Auto-generated method stub
+
 		if(position == 0 )
 		{
 		 Log.d("Metodo que hace reporte: ingreso = Id= ",Integer.toString((int) user_id) );
