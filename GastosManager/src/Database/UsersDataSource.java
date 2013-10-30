@@ -1,6 +1,10 @@
 package Database;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import android.content.ContentValues;
@@ -154,6 +158,57 @@ public class UsersDataSource
 	}
 	return listaGastosIngresos;
     }
+    
+    public List<GastoIngreso> darIngresos30DiasAntes() 
+	{
+		SimpleDateFormat dateFormatToday = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date = new Date();
+		dateFormatToday.format(date);//Here now we have actual Date.
+		
+		int x = -30;
+		Calendar cal = GregorianCalendar.getInstance();
+		cal.add( Calendar.DAY_OF_YEAR, x);
+		Date tenDaysAgo = cal.getTime();
+		SimpleDateFormat dateFormatOld = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		dateFormatOld.format(tenDaysAgo);//Aqui tengo la fecha de hace 30 dias antes.
+		String fechaActual = dateFormatToday.toString();
+		String fechaVieja = dateFormatOld.toString();
+		
+		List<GastoIngreso> listaGastosIngresos = new ArrayList<GastoIngreso>();
+		
+		SimpleDateFormat dateFormatYouWant = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String sCertDate = dateFormatYouWant.format(date);
+		
+		SimpleDateFormat dateFormatYouWant1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String sCertDate1 = dateFormatYouWant.format(tenDaysAgo);
+		
+		String selectQuery = "select * from "+MySQLiteHelper.TABLE_INGRESOS_Y_GASTOS + " where FECHA between " 
+		+ "'"  +sCertDate1+ "'" + " and " + "'" + sCertDate + "'";
+		System.out.println(selectQuery);
+		
+		Cursor c = database.rawQuery(selectQuery, null);
+		
+		// Looping through all rows and adding to list
+		if (c.moveToFirst()) {
+			do {
+				GastoIngreso ig = new GastoIngreso();
+				ig.setId_usuario(c.getLong(c
+						.getColumnIndex(MySQLiteHelper.USUARIO_ID)));
+				ig.setConcepto(c.getString(c
+						.getColumnIndex(MySQLiteHelper.CONCEPTO)));
+				ig.setFecha(c.getString(c.getColumnIndex(MySQLiteHelper.FECHA)));
+				ig.setIngresoGasto(c.getString(c
+						.getColumnIndex(MySQLiteHelper.INGRESO_GASTO)));
+				ig.setValor(c.getInt(c.getColumnIndex(MySQLiteHelper.VALOR)));
+
+				listaGastosIngresos.add(ig);
+
+			} while (c.moveToNext());
+
+		}
+		return listaGastosIngresos;
+		
+	}
 
     public List<GastoIngreso> darTodosLosGastoIngresoPorUsuario(long userID)
     {

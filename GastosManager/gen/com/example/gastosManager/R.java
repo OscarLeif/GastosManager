@@ -85,7 +85,7 @@ public final class R {
         public static final int activity_register=0x7f030002;
         public static final int activity_registro_nuevo_gasto=0x7f030003;
         public static final int activity_tablayout=0x7f030004;
-        public static final int activity_xy__plot=0x7f030005;
+        public static final int activity_xy_plot=0x7f030005;
         public static final int dialog_informacion_gasto_ingreso=0x7f030006;
         public static final int fragment_section_gastos=0x7f030007;
         public static final int fragment_section_ingresos=0x7f030008;

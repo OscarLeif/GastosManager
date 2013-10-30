@@ -1,9 +1,11 @@
 package aChart.Core;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
@@ -19,7 +21,6 @@ import Database.UsersDataSource;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.method.DateTimeKeyListener;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -30,7 +31,7 @@ import android.widget.Toast;
 
 import com.example.gastosManager.R;
 
-public class XY_PlotActivity extends Activity
+public class XY_PlotActivityIngreso extends Activity
 {
 
     /** The main dataset that includes all the series that go into a chart. */
@@ -60,7 +61,7 @@ public class XY_PlotActivity extends Activity
     protected void onCreate(Bundle savedInstanceState)
     {
 	super.onCreate(savedInstanceState);
-	setContentView(R.layout.activity_xy__plot);
+	setContentView(R.layout.activity_xy_plot);
 	Bundle extras = getIntent().getExtras();
 	user_id = extras.getLong("Key");
 
@@ -69,7 +70,7 @@ public class XY_PlotActivity extends Activity
 
 	mRenderer.setAxisTitleTextSize(16);
 	mRenderer.setChartTitleTextSize(20);
-	mRenderer.setXTitle("Fecha");
+	mRenderer.setXTitle("Dia");
 	mRenderer.setYTitle("Ingreso");
 	mRenderer.setXAxisMin(0);
 	mRenderer.setXAxisMax(30);
@@ -84,8 +85,6 @@ public class XY_PlotActivity extends Activity
 	mRenderer.setYLabels(10);
 	//mRenderer.addXTextLabel(1, "Jan");
 	newSeries();
-	agregarValorXY(2, 1);
-	agregarValorXY(3, 2);
 	recogerDatos30dias();
 
     }
@@ -145,42 +144,48 @@ public class XY_PlotActivity extends Activity
     {
 	datasource = new UsersDataSource(this);
 	datasource.open();
-	Calendar c = Calendar.getInstance();
-	System.out.println("Current time => " + c.getTime());
-	ArrayList<Integer> dias = new ArrayList<Integer>();
-	for(int i = 0 ;i<=30; i++){dias.add(i);}// Creo un arreglo donde existen 30 elementos cada uno representa un dia.
+	ArrayList<GastoIngreso> list = new ArrayList<GastoIngreso>();
+	list =  sacarElementosDeUsuarioIngresos((ArrayList<GastoIngreso>) datasource.darIngresos30DiasAntes());
 	
-	Date todayDate = c.getTime();
-	c.add(Calendar.DAY_OF_MONTH, -30);
-	
-	//if(todayDate.after(historyDate) && todayDate.before(futureDate)) {	   } // In between	}
-	
-	ArrayList<GastoIngreso> ingresos = (ArrayList<GastoIngreso>) datasource.darTodosLosGastoIngreso();
-	ArrayList<GastoIngreso> soloIngresos = darIngresos(ingresos);
-	ArrayList<GastoIngreso> solo30DiasIngresos = new ArrayList<GastoIngreso>();
-	
-	for(int i = 0;i<=soloIngresos.size();i++)
+	for(int i=0;i<=list.size()-1;i++)
 	{
-	    //if(solo30DiasIngresos.get(i).getFecha())
+		long y = list.get(i).getValor();
+		String date = list.get(i).getFecha();
+		String string = date;
+		Date date1;
+		long x = 0;
+		try {
+			date1 = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(string);
+			x = date1.getDay();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		agregarValorXY(x - (x-1), y);
 	}
-	
 
     }
     
-    public ArrayList<GastoIngreso> darIngresos(ArrayList<GastoIngreso> array)
-    {
-	ArrayList<GastoIngreso> tmp = new ArrayList<GastoIngreso>();
-	for (int j = 0; j < array.size(); j++)
-	{
-	    System.out.println(array.get(j).getIngresoGasto()
-		    + " Eso es un gastoIngreso");
-	    if (array.get(j).getIngresoGasto().toString() == "gasto")
-	    {
-		tmp.add(array.get(j));
-	    }
-	}
-	return tmp;
-    }
+    public ArrayList<GastoIngreso> sacarElementosDeUsuarioIngresos(
+    	    List<GastoIngreso> lista)
+        {
+    	ArrayList<GastoIngreso> arregloGastoIngreso = new ArrayList<GastoIngreso>();
+    	ArrayList<GastoIngreso> arregloIngresos = new ArrayList<GastoIngreso>();
+    	for (int i = 0; i < lista.size(); i++)
+    	{
+    	    if (lista.get(i).getId_usuario() == user_id 
+    		    && lista.get(i).getIngresoGasto().toString().length() == 7)
+    	    {
+    		arregloGastoIngreso.add(lista.get(i));
+    	    }
+    	}
+
+    	// return arregloGastoIngreso; Este es para devolver todo basado en la
+    	// base de datos
+    	return arregloGastoIngreso;
+
+        }
 
     @Override
     protected void onResume()
@@ -203,13 +208,13 @@ public class XY_PlotActivity extends Activity
 			    .getCurrentSeriesAndPoint();
 		    if (seriesSelection == null)
 		    {
-			Toast.makeText(XY_PlotActivity.this,
+			Toast.makeText(XY_PlotActivityIngreso.this,
 				"No chart element", Toast.LENGTH_SHORT).show();
 		    } else
 		    {
 			// display information of the clicked point
 			Toast.makeText(
-				XY_PlotActivity.this,
+				XY_PlotActivityIngreso.this,
 				"Chart element in series index "
 					+ seriesSelection.getSeriesIndex()
 					+ " data point index "

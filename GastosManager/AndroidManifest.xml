@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="6"
         android:targetSdkVersion="15" />
 
     <application
@@ -46,7 +46,7 @@
             android:label="@string/title_activity_registro__nuevo_ingreso" >
         </activity>
         <activity
-            android:name="aChart.Core.XY_PlotActivity"
+            android:name="aChart.Core.XY_PlotActivityIngreso"
             android:label="@string/title_activity_xy__plot" >
         </activity>
     </application>
