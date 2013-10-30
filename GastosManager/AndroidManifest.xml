@@ -46,7 +46,7 @@
             android:label="@string/title_activity_registro__nuevo_ingreso" >
         </activity>
         <activity
-            android:name="com.example.gastosManager.XY_PlotActivity"
+            android:name="aChart.Core.XY_PlotActivity"
             android:label="@string/title_activity_xy__plot" >
         </activity>
     </application>

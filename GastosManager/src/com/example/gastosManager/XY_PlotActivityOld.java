@@ -34,7 +34,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-public class XYChartBuilder extends Activity {
+public class XY_PlotActivityOld extends Activity {
   /** The main dataset that includes all the series that go into a chart. */
   private XYMultipleSeriesDataset mDataset = new XYMultipleSeriesDataset();
   /** The main renderer that includes all the renderers customizing a chart. */
@@ -160,11 +160,11 @@ public class XYChartBuilder extends Activity {
           // handle the click event on the chart
           SeriesSelection seriesSelection = mChartView.getCurrentSeriesAndPoint();
           if (seriesSelection == null) {
-            Toast.makeText(XYChartBuilder.this, "No chart element", Toast.LENGTH_SHORT).show();
+            Toast.makeText(XY_PlotActivityOld.this, "No chart element", Toast.LENGTH_SHORT).show();
           } else {
             // display information of the clicked point
             Toast.makeText(
-                XYChartBuilder.this,
+                XY_PlotActivityOld.this,
                 "Chart element in series index " + seriesSelection.getSeriesIndex()
                     + " data point index " + seriesSelection.getPointIndex() + " was clicked"
                     + " closest point value X=" + seriesSelection.getXValue() + ", Y="

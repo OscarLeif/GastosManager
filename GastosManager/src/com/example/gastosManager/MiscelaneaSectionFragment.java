@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 import com.gastosManager.Nuevo_usuario_Activity;
 
+import aChart.Core.AverageTemperatureChart;
+import aChart.Core.IDemoChart;
+import aChart.Core.XY_PlotActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -52,9 +56,12 @@ public class MiscelaneaSectionFragment extends Fragment
 		if(position == 0 )
 		{
 		 Log.d("Metodo que hace reporte: ingreso = Id= ",Integer.toString((int) user_id) );
+		 //IDemoChart p= new AverageTemperatureChart(user_id);
 		 Intent i = new Intent(getActivity(), XY_PlotActivity.class);
 		 i.putExtra("Key", user_id);
-		 getActivity().startActivity(i);
+		 //getActivity().startActivity(i);
+		 startActivity(i);
+		 
 		}
 		if(position == 1)
 		{
