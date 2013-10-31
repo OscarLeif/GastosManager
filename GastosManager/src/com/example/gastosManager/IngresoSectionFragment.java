@@ -54,7 +54,7 @@ public class IngresoSectionFragment extends Fragment
 	    idStatico = darUserID(user_id);
 	}
 
-	lista = (ListView) rootView.findViewById(R.id.listaUsuarios);
+	lista = (ListView) rootView.findViewById(R.id.listaInformes);
 	datasource = new UsersDataSource(getActivity());
 	datasource.open();
 
@@ -83,7 +83,7 @@ public class IngresoSectionFragment extends Fragment
 		d.setContentView(R.layout.dialog_informacion_gasto_ingreso);
 		d.setTitle("Informacion del Ingreso");
 		// Necesitamos la informacion de esta lista
-		TextView t = (TextView) d.findViewById(R.id.textView1);
+		TextView t = (TextView) d.findViewById(R.id.textInformes);
 
 		List<GastoIngreso> values = datasource
 			.darTodosLosGastoIngreso();
@@ -224,6 +224,13 @@ public class IngresoSectionFragment extends Fragment
     {
 	// TODO Auto-generated method stub
 	return user_id = userKey;
+    }
+    
+    @Override
+    public void onDestroy() {
+    	// TODO Auto-generated method stub
+    	super.onDestroy();
+    	
     }
 
 }

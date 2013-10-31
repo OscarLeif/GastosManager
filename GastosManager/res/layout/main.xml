@@ -23,7 +23,7 @@
         android:layout_height="match_parent" >
 
         <ListView
-            android:id="@+id/listaUsuarios"
+            android:id="@+id/listaInformes"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layoutAnimation="@layout/layout_buttom_top_slide" >

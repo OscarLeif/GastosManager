@@ -46,7 +46,7 @@ public class GastosSectionFragment extends Fragment
 	    idStatico = darUserID(user_id);
 	}
 
-	lista = (ListView) rootView.findViewById(R.id.listaUsuarios);
+	lista = (ListView) rootView.findViewById(R.id.listaInformes);
 	datasource = new UsersDataSource(getActivity());
 	datasource.open();
 

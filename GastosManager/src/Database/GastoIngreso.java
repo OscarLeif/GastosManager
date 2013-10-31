@@ -80,8 +80,8 @@ public class GastoIngreso
     public String toString()
     {
 	// TODO Auto-generated method stub
-	return "Usuario ID: " + id_usuario + " " + concepto + " : Valor: "
-		+ valor + "Fecha: " + getFecha();
+	return concepto + " : valor: "
+		+ valor ;
     }
 
 }

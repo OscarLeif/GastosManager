@@ -43,13 +43,16 @@
         </activity>
         <activity
             android:name="com.example.gastosManager.IngresoSectionFragment"
-            android:label="@string/title_activity_registro__nuevo_ingreso" 
-            android:parentActivityName="com.example.gastosManager.TablayoutActivity">
+            android:label="@string/title_activity_registro__nuevo_ingreso"
+            android:parentActivityName="com.example.gastosManager.TablayoutActivity" >
         </activity>
         <activity
             android:name="aChart.Core.XY_PlotActivityIngreso"
             android:label="@string/title_activity_xy__plot" >
-
+        </activity>
+        <activity
+            android:name="com.example.gastosManager.InformesGastosIngresos"
+            android:label="@string/title_activity_informes_gastos_ingresos" >
         </activity>
     </application>
 

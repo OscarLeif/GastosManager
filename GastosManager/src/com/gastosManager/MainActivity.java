@@ -40,7 +40,7 @@ public class MainActivity extends Activity
 	datasource = new UsersDataSource(this);
 	datasource.open();
 
-	final ListView lista = (ListView) findViewById(R.id.listaUsuarios);
+	final ListView lista = (ListView) findViewById(R.id.listaInformes);
 	List<Usuario> values = datasource.darTodosLosUsuario();
 	ArrayAdapter<Usuario> adapter = new ArrayAdapter<Usuario>(this,
 		android.R.layout.simple_list_item_1, values);
@@ -83,12 +83,12 @@ public class MainActivity extends Activity
 	// TODO Auto-generated method stub
 	super.onResume();
 	datasource.open();
-	ListView lista = (ListView) findViewById(R.id.listaUsuarios);
+	ListView lista = (ListView) findViewById(R.id.listaInformes);
 	// use the SimpleCursorAdapter to show the
 	// elements in a ListView
 	List<Usuario> values = datasource.darTodosLosUsuario();
 	ArrayAdapter<Usuario> adapter = new ArrayAdapter<Usuario>(this,
-		R.layout.rowlayout,R.id.label, values);
+		R.layout.rowlayout,R.id.labelInforme, values);
 	lista.setAdapter(adapter);
 	lista.setOnItemClickListener(new AdapterView.OnItemClickListener()
 	{
@@ -148,7 +148,7 @@ public class MainActivity extends Activity
 	case R.id.borrarActual:
 
 	    datasource.open();
-	    ListView lista = (ListView) findViewById(R.id.listaUsuarios);
+	    ListView lista = (ListView) findViewById(R.id.listaInformes);
 	    // use the SimpleCursorAdapter to show the
 	    // elements in a ListView
 	    List<Usuario> values = datasource.darTodosLosUsuario();
