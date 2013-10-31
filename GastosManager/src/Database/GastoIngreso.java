@@ -38,7 +38,7 @@ public class GastoIngreso
     public String getFecha()
     {
 	
-	return fecha;
+	return fecha.replace("00:00:00", "");
     }
 
     public void setFecha(String fecha)

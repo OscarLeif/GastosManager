@@ -35,20 +35,19 @@ public final class R {
         public static final int user_icon=0x7f020003;
     }
     public static final class id {
-        public static final int AcercaDeGM=0x7f09002a;
+        public static final int AcercaDeGM=0x7f09002e;
         public static final int FechaNacimiento=0x7f090006;
-        public static final int action_settings=0x7f090025;
-        public static final int add=0x7f090016;
-        public static final int borrarActual=0x7f090029;
-        public static final int botonAgregar=0x7f090021;
+        public static final int action_settings=0x7f090029;
+        public static final int borrarActual=0x7f09002d;
+        public static final int botonAgregar=0x7f090025;
         public static final int botonAgregarUsuario=0x7f090007;
-        public static final int botonCancelar=0x7f090022;
+        public static final int botonCancelar=0x7f090026;
         public static final int botonFechaNacimiento=0x7f090005;
-        public static final int botonNuevoGasto=0x7f09001c;
-        public static final int botonNuevoIngreso=0x7f09001e;
+        public static final int botonNuevoGasto=0x7f09001d;
+        public static final int botonNuevoIngreso=0x7f09001f;
         public static final int buttonCancel=0x7f090012;
         public static final int buttonOK=0x7f090011;
-        public static final int chart=0x7f090017;
+        public static final int chart_container=0x7f090015;
         public static final int datePicker1=0x7f090008;
         public static final int datePickerIngresoGasto=0x7f090010;
         public static final int editEdadA=0x7f090003;
@@ -56,28 +55,33 @@ public final class R {
         public static final int editNumeroA=0x7f090004;
         public static final int editTextConcepto=0x7f09000b;
         public static final int editTextValor=0x7f09000d;
-        public static final int icon=0x7f090023;
-        public static final int item1=0x7f090026;
-        public static final int item2=0x7f090027;
-        public static final int label=0x7f090024;
+        public static final int graficoBarras=0x7f090023;
+        public static final int icon=0x7f090027;
+        public static final int imageView1=0x7f090017;
+        public static final int include1=0x7f090021;
+        public static final int item1=0x7f09002a;
+        public static final int item2=0x7f09002b;
+        public static final int label=0x7f090028;
         public static final int linearLayout1=0x7f09000a;
+        public static final int linearLayout2=0x7f090016;
         public static final int linearLayout3=0x7f09000e;
-        public static final int listaUsuarios=0x7f09001d;
-        public static final int lista_miscelanea=0x7f09001f;
-        public static final int menuAgregar=0x7f090028;
-        public static final int new_series=0x7f090018;
+        public static final int listaUsuarios=0x7f09001e;
+        public static final int lista_miscelanea=0x7f090020;
+        public static final int menuAgregar=0x7f09002c;
         public static final int pager=0x7f090013;
+        public static final int relativeLayout1=0x7f090018;
+        public static final int textTitulo=0x7f090022;
         public static final int textView1=0x7f09000f;
         public static final int textView2=0x7f090001;
-        public static final int textViewDConcepto=0x7f090019;
-        public static final int textViewDFecha=0x7f09001b;
+        public static final int textViewDConcepto=0x7f09001a;
+        public static final int textViewDFecha=0x7f09001c;
         public static final int textViewDIngresoGasto=0x7f09000c;
-        public static final int textViewDValor=0x7f09001a;
+        public static final int textViewDValor=0x7f09001b;
         public static final int textViewGastoIngreso=0x7f090009;
-        public static final int textViewTituloAp=0x7f090020;
+        public static final int textViewTituloAp=0x7f090024;
+        public static final int tv_title=0x7f090014;
         public static final int txtSeleccioneUsuario=0x7f090000;
-        public static final int xValue=0x7f090014;
-        public static final int yValue=0x7f090015;
+        public static final int txtSubCabecera=0x7f090019;
     }
     public static final class layout {
         public static final int acerca_de_insos=0x7f030000;
@@ -86,17 +90,17 @@ public final class R {
         public static final int activity_registro_nuevo_gasto=0x7f030003;
         public static final int activity_tablayout=0x7f030004;
         public static final int activity_xy_plot=0x7f030005;
-        public static final int dialog_informacion_gasto_ingreso=0x7f030006;
-        public static final int fragment_section_gastos=0x7f030007;
-        public static final int fragment_section_ingresos=0x7f030008;
-        public static final int fragment_section_miscelanea=0x7f030009;
-        public static final int layout_buttom_top_slide=0x7f03000a;
-        public static final int main=0x7f03000b;
-        public static final int nuevo_usuario=0x7f03000c;
-        public static final int rowlayout=0x7f03000d;
-        public static final int slide_right=0x7f03000e;
-        public static final int xy_chart=0x7f03000f;
-        public static final int xy_plot_test=0x7f030010;
+        public static final int cabecera=0x7f030006;
+        public static final int dialog_informacion_gasto_ingreso=0x7f030007;
+        public static final int fragment_section_gastos=0x7f030008;
+        public static final int fragment_section_ingresos=0x7f030009;
+        public static final int fragment_section_miscelanea=0x7f03000a;
+        public static final int informes_graficos=0x7f03000b;
+        public static final int layout_buttom_top_slide=0x7f03000c;
+        public static final int main=0x7f03000d;
+        public static final int nuevo_usuario=0x7f03000e;
+        public static final int rowlayout=0x7f03000f;
+        public static final int slide_right=0x7f030010;
     }
     public static final class menu {
         public static final int collection_demo=0x7f080000;
@@ -144,31 +148,16 @@ public final class R {
     }
     public static final class style {
         /** 
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    
-
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        
-
         Base application theme for API 11+. This theme completely replaces
         AppBaseTheme from res/values/styles.xml on API 11+ devices.
     
- API 11 theme customizations can go here. 
 
         Base application theme for API 14+. This theme completely replaces
         AppBaseTheme from BOTH res/values/styles.xml and
         res/values-v11/styles.xml on API 14+ devices.
     
- API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f050002;
-        /**  Application theme. 
- All customizations that are NOT specific to a particular API-level can go here. 
-         */
-        public static final int AppTheme=0x7f050003;
+        public static final int AppTheme=0x7f050002;
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.

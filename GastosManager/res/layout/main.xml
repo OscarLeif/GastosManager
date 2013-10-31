@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin" 
-    android:background="@drawable/background">
+    >
 
     <TextView
         android:id="@+id/textViewTituloAp"
@@ -41,7 +41,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:onClick="botonOK"
             android:text="Aceptar" 
             android:visibility="gone"/>
 

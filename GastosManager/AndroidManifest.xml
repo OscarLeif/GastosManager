@@ -13,7 +13,7 @@
         android:configChanges="orientation|keyboardHidden"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppBaseTheme" >
+        android:theme="@style/AppTheme" >
         <activity
             android:name="com.gastosManager.MainActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -43,16 +43,13 @@
         </activity>
         <activity
             android:name="com.example.gastosManager.IngresoSectionFragment"
-            android:label="@string/title_activity_registro__nuevo_ingreso" >
+            android:label="@string/title_activity_registro__nuevo_ingreso" 
+            android:parentActivityName="com.example.gastosManager.TablayoutActivity">
         </activity>
         <activity
             android:name="aChart.Core.XY_PlotActivityIngreso"
             android:label="@string/title_activity_xy__plot" >
-            <intent-filter>
-                <action android:name="aChart.Core.XY_PlotActivityIngreso" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
     </application>
 
