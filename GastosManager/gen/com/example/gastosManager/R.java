@@ -88,7 +88,7 @@ public final class R {
         public static final int activity_collection_demo=0x7f030001;
         public static final int activity_informes_gastos_ingresos=0x7f030002;
         public static final int activity_register=0x7f030003;
-        public static final int activity_registro_nuevo_gasto=0x7f030004;
+        public static final int activity_registro_nuevo_gasto_ingreso=0x7f030004;
         public static final int activity_tablayout=0x7f030005;
         public static final int activity_xy_plot=0x7f030006;
         public static final int cabecera=0x7f030007;

@@ -44,8 +44,8 @@ public class MiscelaneaSectionFragment extends Fragment {
 		}
 
 		ArrayList<String> opciones = new ArrayList<String>();
-		opciones.add("Informe de ingresos");
-		opciones.add("Informe de gastos");
+		opciones.add("Informe de ingresos, 30 dias");
+		opciones.add("Informe de gastos, 30 dias");
 		opciones.add("Informe de movimientos");
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
@@ -84,6 +84,9 @@ public class MiscelaneaSectionFragment extends Fragment {
 				}
 				if (position == 2) {
 					Log.d("Metodo que hace reporte: ", "movimientos");
+					//Intent i = new Intent(getActivity(), XYPlot.class);
+					//i.putExtra("Key", user_id);
+					//startActivity(i);
 				}
 
 			}

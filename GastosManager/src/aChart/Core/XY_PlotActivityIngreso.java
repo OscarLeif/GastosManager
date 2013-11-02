@@ -30,6 +30,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.gastosManager.R;
+import com.example.gastosManager.TablayoutActivity;
 
 /**
  * Hay que volver a reescribir toda esta clase para que funcione correctamente
@@ -135,7 +136,8 @@ public class XY_PlotActivityIngreso extends Activity
         // Creating a Time Chart
         Context t = getBaseContext();
         
-        mChart.repaint();
+        //mChart = (GraphicalView) ChartFactory.getTimeChartView(TablayoutActivity., dataset, multiRenderer,"dd-MMM-yyyy");
+        
  
         multiRenderer.setClickEnabled(true);
         multiRenderer.setSelectableBuffer(10);

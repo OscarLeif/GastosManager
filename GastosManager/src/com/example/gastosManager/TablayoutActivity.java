@@ -110,5 +110,12 @@ public class TablayoutActivity extends FragmentActivity implements
 		// TODO Auto-generated method stub
 
 	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		finish();
+	}
 
 }
