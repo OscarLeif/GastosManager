@@ -7,10 +7,12 @@ import java.util.Locale;
 
 import Database.GastoIngreso;
 import Database.UsersDataSource;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -46,8 +48,11 @@ public class Registro_NuevoGastoIngreso extends Activity {
 
 		datasource = new UsersDataSource(this);
 		datasource.open();
+		
+		Button botonCancelar = (Button)findViewById(R.id.buttonCancel);
+		Button botonOK = (Button) findViewById(R.id.buttonOK);
 
-		findViewById(R.id.buttonCancel).setOnClickListener(
+		botonCancelar.setOnClickListener(
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
@@ -55,11 +60,11 @@ public class Registro_NuevoGastoIngreso extends Activity {
 					}
 				});
 
-		findViewById(R.id.buttonOK).setOnClickListener(
+		botonOK.setOnClickListener(
 				new View.OnClickListener() {
 
-					private int theDate;
-
+					@SuppressWarnings("deprecation")
+					@SuppressLint("SimpleDateFormat")
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
@@ -84,12 +89,9 @@ public class Registro_NuevoGastoIngreso extends Activity {
 						gasto.setId_usuario(user_id1);
 						DatePicker datePicker = (DatePicker) findViewById(R.id.datePickerIngresoGasto);
 
-						String finalDateTime = "";
 						SimpleDateFormat iso8601Format = new SimpleDateFormat(
 								"yyyy-MM-dd HH:mm:ss");
-						Date date = new Date(datePicker.getYear() - 1900,
-								datePicker.getMonth(), datePicker
-										.getDayOfMonth());
+						Date date = new Date(datePicker.getYear() - 1900,datePicker.getMonth(), datePicker.getDayOfMonth());
 						date.getTime();
 
 						iso8601Format.format(date);
@@ -99,7 +101,9 @@ public class Registro_NuevoGastoIngreso extends Activity {
 						if (!gasto.getConcepto().equals("")
 								&& gasto.getValor() != 0
 								&& verificarFecha(date)) {
+							datasource.open();
 							datasource.crearNuevoGastoIngreso(gasto);
+							datasource.close();
 							finish();
 						}
 
@@ -118,7 +122,9 @@ public class Registro_NuevoGastoIngreso extends Activity {
 									"La fecha no puede ser mayor al dia de hoy.",
 									Toast.LENGTH_LONG).show();
 					}
+					
 				});
+		datasource.close();
 	}
 
 	public boolean verificarFecha(Date date) {// Verifica que la fecha no sea
