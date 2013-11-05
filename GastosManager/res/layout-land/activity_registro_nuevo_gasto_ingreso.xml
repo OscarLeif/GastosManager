@@ -11,7 +11,7 @@
         android:stretchColumns="1" >
 
         <TextView
-            android:id="@+id/textViewGastoIngreso"
+            android:id="@+id/textViewReporteAR2F"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_alignLeft="@+id/linearLayout1"
@@ -74,7 +74,7 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/textInformes"
+                android:id="@+id/textViewInformes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Asigna una fecha"
@@ -82,7 +82,7 @@
                 android:textSize="15sp" />
 
             <DatePicker
-                android:id="@+id/datePickerIngresoGasto"
+                android:id="@+id/datePickerInicial"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="5dp"
@@ -106,7 +106,7 @@
                 android:text="Aceptar" />
 
             <Button
-                android:id="@+id/buttonCancel"
+                android:id="@+id/buttonCancelar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

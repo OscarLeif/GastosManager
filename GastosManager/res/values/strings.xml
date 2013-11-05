@@ -30,5 +30,6 @@
     <string name="new_series">New series</string>
     <string name="title_activity_xy__plot">XY_PlotActivity</string>
     <string name="title_activity_informes_gastos_ingresos">InformesGastosIngresos</string>
+    <string name="title_activity_reporte2_fechas">Reporte2Fechas</string>
 
 </resources>

@@ -54,6 +54,10 @@
             android:name="com.example.gastosManager.InformesGastosIngresos"
             android:label="@string/title_activity_informes_gastos_ingresos" >
         </activity>
+        <activity
+            android:name="com.example.gastosManager.Reporte2Fechas"
+            android:label="@string/title_activity_reporte2_fechas" >
+        </activity>
     </application>
 
 </manifest>

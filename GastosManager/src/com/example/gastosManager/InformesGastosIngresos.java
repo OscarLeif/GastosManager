@@ -2,6 +2,7 @@ package com.example.gastosManager;
 
 import java.nio.channels.GatheringByteChannel;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import Database.GastoIngreso;
@@ -19,6 +20,8 @@ public class InformesGastosIngresos extends Activity {
 	private UsersDataSource dataBase;
 	private ArrayList<GastoIngreso> ingresosUsuario;
 	private int gastoIngreso; // Si es 0 es un ingreso, 1 es un gasto.
+	private java.util.Date fechaInicial;
+	private java.util.Date fechaFinal;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,7 @@ public class InformesGastosIngresos extends Activity {
 		setContentView(R.layout.activity_informes_gastos_ingresos);
 		Bundle extras = getIntent().getExtras();
 		id = extras.getLong("Key");
+		fechaInicial = new Date(getIntent().getExtras().getLong("dateI", -1));
 		gastoIngreso = extras.getInt("IG");
 		dataBase = new UsersDataSource(this);
 		ingresosUsuario = new ArrayList<GastoIngreso>();
@@ -40,7 +44,7 @@ public class InformesGastosIngresos extends Activity {
 					this, android.R.layout.simple_list_item_1, values);
 			lista.setAdapter(adapter);
 			dataBase.close();
-			TextView total = (TextView) findViewById(R.id.textInformes);
+			TextView total = (TextView) findViewById(R.id.textViewInformes);
 			String resultado = "Total Ingresos: "
 					+ Integer.toString(darTotalGastoIngresos());
 			total.setText(resultado);
@@ -53,7 +57,7 @@ public class InformesGastosIngresos extends Activity {
 					this, android.R.layout.simple_list_item_1, values);
 			lista.setAdapter(adapter);
 			dataBase.close();
-			TextView total = (TextView) findViewById(R.id.textInformes);
+			TextView total = (TextView) findViewById(R.id.textViewInformes);
 			String resultado = "Total Gastos: "
 					+ Integer.toString(darTotalGastoIngresos());
 			total.setText(resultado);

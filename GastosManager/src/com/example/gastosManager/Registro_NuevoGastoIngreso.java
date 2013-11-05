@@ -37,10 +37,10 @@ public class Registro_NuevoGastoIngreso extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_registro_nuevo_gasto_ingreso);
 		Bundle extras = getIntent().getExtras();
-		tv = (TextView) findViewById(R.id.textViewGastoIngreso);
+		tv = (TextView) findViewById(R.id.textViewReporteAR2F);
 
 		final String gastoIngreso = extras.getString("GastoIngreso");
-		String text = "Ingrese la informacion del " + gastoIngreso;
+		String text = "Informacion de " + gastoIngreso + "s";
 		tv.setText(text);
 		long user_id = extras.getLong("key");
 		user_id1 = user_id;
@@ -49,7 +49,7 @@ public class Registro_NuevoGastoIngreso extends Activity {
 		datasource = new UsersDataSource(this);
 		datasource.open();
 		
-		Button botonCancelar = (Button)findViewById(R.id.buttonCancel);
+		Button botonCancelar = (Button)findViewById(R.id.buttonCancelar);
 		Button botonOK = (Button) findViewById(R.id.buttonOK);
 
 		botonCancelar.setOnClickListener(
@@ -87,7 +87,7 @@ public class Registro_NuevoGastoIngreso extends Activity {
 						gasto.setIngresoGasto(gastoIngreso);
 						gasto.setValor(valor);
 						gasto.setId_usuario(user_id1);
-						DatePicker datePicker = (DatePicker) findViewById(R.id.datePickerIngresoGasto);
+						DatePicker datePicker = (DatePicker) findViewById(R.id.datePickerInicial);
 
 						SimpleDateFormat iso8601Format = new SimpleDateFormat(
 								"yyyy-MM-dd HH:mm:ss");

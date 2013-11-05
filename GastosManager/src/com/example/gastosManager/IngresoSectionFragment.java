@@ -83,7 +83,7 @@ public class IngresoSectionFragment extends Fragment
 		d.setContentView(R.layout.dialog_informacion_gasto_ingreso);
 		d.setTitle("Informacion del Ingreso");
 		// Necesitamos la informacion de esta lista
-		TextView t = (TextView) d.findViewById(R.id.textInformes);
+		TextView t = (TextView) d.findViewById(R.id.textViewInformes);
 
 		List<GastoIngreso> values = datasource
 			.darTodosLosGastoIngreso();
@@ -111,7 +111,8 @@ public class IngresoSectionFragment extends Fragment
 			intent.putExtra("key", user_id);
 			intent.putExtra("GastoIngreso", "ingreso");
 			startActivity(intent);
-			System.out.println("el boton nuevo ingreso funciona correctamente");
+			System.out
+				.println("el boton nuevo ingreso funciona correctamente");
 		    }
 		});
 
@@ -162,7 +163,8 @@ public class IngresoSectionFragment extends Fragment
 		d.setTitle("Informacion del Ingreso");
 
 		// Necesitamos la informacion de esta lista
-		TextView t = (TextView) d.findViewById(R.id.textViewDIngresoGasto);
+		TextView t = (TextView) d
+			.findViewById(R.id.textViewDIngresoGasto);
 		t.setText("Ingreso:");
 		TextView t1 = (TextView) d.findViewById(R.id.textViewDConcepto);
 		TextView t2 = (TextView) d.findViewById(R.id.textViewDValor);
@@ -175,7 +177,6 @@ public class IngresoSectionFragment extends Fragment
 		t2.setText(String.valueOf(ingreso.getValor()));
 		String fecha = ingreso.getFecha().replace("00:00:00", "");
 		t3.setText(fecha);
-		
 
 		System.out.println(t.getText());
 		// Log.d("Metodo activado nuevamente: ","pulsado");
@@ -192,7 +193,7 @@ public class IngresoSectionFragment extends Fragment
 	ArrayList<GastoIngreso> arregloIngresos = new ArrayList<GastoIngreso>();
 	for (int i = 0; i < lista.size(); i++)
 	{
-	    if (lista.get(i).getId_usuario() == idStatico 
+	    if (lista.get(i).getId_usuario() == idStatico
 		    && lista.get(i).getIngresoGasto().toString().length() == 7)
 	    {
 		arregloGastoIngreso.add(lista.get(i));
@@ -225,12 +226,13 @@ public class IngresoSectionFragment extends Fragment
 	// TODO Auto-generated method stub
 	return user_id = userKey;
     }
-    
+
     @Override
-    public void onDestroy() {
-    	// TODO Auto-generated method stub
-    	super.onDestroy();
-    	
+    public void onDestroy()
+    {
+	// TODO Auto-generated method stub
+	super.onDestroy();
+
     }
 
 }

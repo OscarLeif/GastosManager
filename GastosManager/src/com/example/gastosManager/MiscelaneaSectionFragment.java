@@ -47,6 +47,7 @@ public class MiscelaneaSectionFragment extends Fragment {
 		opciones.add("Informe de ingresos, 30 dias");
 		opciones.add("Informe de gastos, 30 dias");
 		opciones.add("Informe de movimientos");
+		opciones.add("Reporte entre dos fechas");
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
 				android.R.layout.simple_list_item_1, opciones);
@@ -67,7 +68,7 @@ public class MiscelaneaSectionFragment extends Fragment {
 							Integer.toString((int) user_id));
 					// IDemoChart p= new AverageTemperatureChart(user_id);
 					Intent i = new Intent(getActivity(),
-							InformesGastosIngresos.class);
+							Reporte2Fechas.class);
 					i.putExtra("Key", idStatico);
 					i.putExtra("IG", 0);
 					startActivity(i);
