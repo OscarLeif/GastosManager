@@ -163,6 +163,13 @@ public class Registro_NuevoGastoIngreso extends Activity {
 		getMenuInflater().inflate(R.menu.registro__nuevo_gasto, menu);
 		return true;
 	}
+	
+	@Override
+	protected void onResume()
+	{
+	// TODO Auto-generated method stub
+	super.onResume();
+	}
 
 	@Override
 	public void onBackPressed() {

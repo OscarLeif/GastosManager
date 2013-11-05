@@ -44,11 +44,9 @@ public class MiscelaneaSectionFragment extends Fragment {
 		}
 
 		ArrayList<String> opciones = new ArrayList<String>();
-		opciones.add("Informe de ingresos, 30 dias");
-		opciones.add("Informe de gastos, 30 dias");
-		opciones.add("Informe de movimientos");
-		opciones.add("Reporte entre dos fechas");
-
+		opciones.add("Informe ingresos");
+		opciones.add("Informe gastos");
+		
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
 				android.R.layout.simple_list_item_1, opciones);
 		listaMiscelanea = (ListView) rootView
@@ -76,8 +74,7 @@ public class MiscelaneaSectionFragment extends Fragment {
 				}
 				if (position == 1) {
 					Log.d("Metodo que hace reporte: ", "gastos");
-					Intent i = new Intent(getActivity(),
-							InformesGastosIngresos.class);
+					Intent i = new Intent(getActivity(),Reporte2Fechas.class);
 					i.putExtra("Key", idStatico);
 					i.putExtra("IG", 1);
 					startActivity(i);

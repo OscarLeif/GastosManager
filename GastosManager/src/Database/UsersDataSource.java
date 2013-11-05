@@ -220,6 +220,54 @@ public class UsersDataSource
 	return listaGastosIngresos;
 
     }
+    
+    public List<GastoIngreso> darIngresosIntervalo2Fechas(Date fechaInicial, Date fechaFinal)
+    {
+	SimpleDateFormat dateFormatStart = new SimpleDateFormat(
+		"yyyy-MM-dd HH:mm:ss");
+	SimpleDateFormat dateFormatFinish = new SimpleDateFormat(
+		"yyyy-MM-dd HH:mm:ss");
+	dateFormatStart.format(fechaInicial);// Here now we have the starDate
+	dateFormatFinish.format(fechaFinal);//Here now we have the finish date.
+	List<GastoIngreso> listaGastosIngresos = new ArrayList<GastoIngreso>();
+
+	String primero = dateFormatStart.format(fechaInicial);
+	String segundo = dateFormatStart.format(fechaFinal);
+	primero.replace("00:00:00", "");
+	segundo.replace("00:00:00", "");
+	
+	String selectQuery = "select * from "
+		+ MySQLiteHelper.TABLE_INGRESOS_Y_GASTOS
+		+ " where FECHA between " + "'" + primero+ "'" + " and "
+		+ "'" + segundo + "'";
+	System.out.println(selectQuery);
+	
+	Cursor c = database.rawQuery(selectQuery, null);
+
+	// Looping through all rows and adding to list
+	if (c.moveToFirst())
+	{
+	    do
+	    {
+		GastoIngreso ig = new GastoIngreso();
+		ig.setId_usuario(c.getLong(c
+			.getColumnIndex(MySQLiteHelper.USUARIO_ID)));
+		ig.setConcepto(c.getString(c
+			.getColumnIndex(MySQLiteHelper.CONCEPTO)));
+		ig.setFecha(c.getString(c.getColumnIndex(MySQLiteHelper.FECHA)));
+		ig.setIngresoGasto(c.getString(c
+			.getColumnIndex(MySQLiteHelper.INGRESO_GASTO)));
+		ig.setValor(c.getInt(c.getColumnIndex(MySQLiteHelper.VALOR)));
+
+		listaGastosIngresos.add(ig);
+
+	    } while (c.moveToNext());
+
+	}
+	c.close();
+	return listaGastosIngresos;
+	
+    }
 
     public List<GastoIngreso> darTodosLosGastoIngresoPorUsuario(long userID)
     {

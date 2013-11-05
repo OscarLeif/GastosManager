@@ -8,8 +8,12 @@ import java.util.List;
 import Database.GastoIngreso;
 import Database.UsersDataSource;
 import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -29,21 +33,24 @@ public class InformesGastosIngresos extends Activity {
 		setContentView(R.layout.activity_informes_gastos_ingresos);
 		Bundle extras = getIntent().getExtras();
 		id = extras.getLong("Key");
-		fechaInicial = new Date(getIntent().getExtras().getLong("dateI", -1));
+		fechaInicial = (Date)this.getIntent().getExtras().get("dateI");
+		//fechaInicial = new Date(getIntent().getExtras().getLong("dateI", -1));
+		fechaFinal = (Date) this.getIntent().getExtras().get("dateF");
 		gastoIngreso = extras.getInt("IG");
 		dataBase = new UsersDataSource(this);
 		ingresosUsuario = new ArrayList<GastoIngreso>();
 		dataBase.open();
 		ListView lista = (ListView) findViewById(R.id.listaInformes);
-
+		
+		
 		if (gastoIngreso == 0) {
 			List<GastoIngreso> values = sacarElementosDeUsuarioIngresosIngresos(dataBase
-					.darIngresos30DiasAntes());
+					.darIngresosIntervalo2Fechas(fechaInicial, fechaFinal));
 			ingresosUsuario = (ArrayList<GastoIngreso>) values;
 			ArrayAdapter<GastoIngreso> adapter = new ArrayAdapter<GastoIngreso>(
 					this, android.R.layout.simple_list_item_1, values);
 			lista.setAdapter(adapter);
-			dataBase.close();
+			
 			TextView total = (TextView) findViewById(R.id.textViewInformes);
 			String resultado = "Total Ingresos: "
 					+ Integer.toString(darTotalGastoIngresos());
@@ -56,13 +63,81 @@ public class InformesGastosIngresos extends Activity {
 			ArrayAdapter<GastoIngreso> adapter = new ArrayAdapter<GastoIngreso>(
 					this, android.R.layout.simple_list_item_1, values);
 			lista.setAdapter(adapter);
-			dataBase.close();
+			
 			TextView total = (TextView) findViewById(R.id.textViewInformes);
 			String resultado = "Total Gastos: "
 					+ Integer.toString(darTotalGastoIngresos());
 			total.setText(resultado);
 
 		}
+		
+		lista.setOnItemClickListener(new AdapterView.OnItemClickListener()
+		{
+		    public void onItemClick(AdapterView<?> arg0, View arg1,
+			    int position, long arg3)
+		    {
+			dataBase.open();
+			final List<GastoIngreso> values = dataBase.darTodosLosGastoIngreso();
+
+			// Cursor o =(Cursor) lista.getItemAtPosition(position);
+			// cargaGestionCuenta(o.getString(o.getColumnIndex("_id")),o.getString(o.getColumnIndex("desCuenta")));
+			Log.d("Pulsado item: ", String.valueOf(position));
+			// Mostramos la informacion del ingreso en buen detalle.
+			Dialog d = new Dialog(InformesGastosIngresos.this);
+			d.setContentView(R.layout.dialog_informacion_gasto_ingreso);
+			if(gastoIngreso == 0)
+			d.setTitle("Informacion del Ingreso");
+			if(gastoIngreso == 1)
+			    d.setTitle("Informacion del gasto");
+
+			// Necesitamos la informacion de esta lista
+			if(gastoIngreso ==0)
+			{
+			TextView t = (TextView) d
+				.findViewById(R.id.textViewDIngresoGasto);
+			t.setText("Ingreso:");
+			TextView t1 = (TextView) d.findViewById(R.id.textViewDConcepto);
+			TextView t2 = (TextView) d.findViewById(R.id.textViewDValor);
+			TextView t3 = (TextView) d.findViewById(R.id.textViewDFecha);
+
+			ArrayList<GastoIngreso> tmp = sacarElementosDeUsuarioIngresosIngresos(values);
+			GastoIngreso ingreso = tmp.get(position);
+
+			t1.setText(ingreso.getConcepto());
+			t2.setText(String.valueOf(ingreso.getValor()));
+			String fecha = ingreso.getFecha().replace("00:00:00", "");
+			t3.setText(fecha);
+
+			System.out.println(t.getText());
+			// Log.d("Metodo activado nuevamente: ","pulsado");
+			d.show();
+			}
+			
+			if(gastoIngreso ==1)
+			{
+			TextView t = (TextView) d
+				.findViewById(R.id.textViewDIngresoGasto);
+			t.setText("Ingreso:");
+			TextView t1 = (TextView) d.findViewById(R.id.textViewDConcepto);
+			TextView t2 = (TextView) d.findViewById(R.id.textViewDValor);
+			TextView t3 = (TextView) d.findViewById(R.id.textViewDFecha);
+
+			ArrayList<GastoIngreso> tmp = sacarElementosDeUsuarioIngresosGastos(values);
+			GastoIngreso ingreso = tmp.get(position);
+
+			t1.setText(ingreso.getConcepto());
+			t2.setText(String.valueOf(ingreso.getValor()));
+			String fecha = ingreso.getFecha().replace("00:00:00", "");
+			t3.setText(fecha);
+
+			System.out.println(t.getText());
+			// Log.d("Metodo activado nuevamente: ","pulsado");
+			d.show();
+			}
+			dataBase.close();
+		    }
+		});
+		dataBase.close();
 	}
 
 	@Override
@@ -120,10 +195,12 @@ public class InformesGastosIngresos extends Activity {
 	}
 	
 	@Override
-	protected void onDestroy() {
-		// TODO Auto-generated method stub
-		super.onDestroy();
-		finish();
+	public void onBackPressed()
+	{
+	// TODO Auto-generated method stub
+	super.onBackPressed();
+	finish();
 	}
+
 
 }
