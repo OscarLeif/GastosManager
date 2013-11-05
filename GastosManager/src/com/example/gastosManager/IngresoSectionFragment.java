@@ -60,90 +60,11 @@ public class IngresoSectionFragment extends Fragment
 
 	// use the SimpleCursorAdapter to show the
 	// elements in a ListView
-	List<GastoIngreso> values = datasource.darTodosLosGastoIngreso();
-	ArrayList<GastoIngreso> arregloG = new ArrayList<GastoIngreso>();
-
-	arregloG = sacarElementosDeUsuarioIngresos(values);
-
-	ArrayAdapter<GastoIngreso> adapter = new ArrayAdapter<GastoIngreso>(
-		getActivity(), android.R.layout.simple_list_item_1, arregloG);
-	lista.setAdapter(adapter);
-
-	lista.setOnItemClickListener(new AdapterView.OnItemClickListener()
-	{
-	    public void onItemClick(AdapterView<?> arg0, View arg1,
-		    int position, long arg3)
-	    {
-
-		// Cursor o =(Cursor) lista.getItemAtPosition(position);
-		// cargaGestionCuenta(o.getString(o.getColumnIndex("_id")),o.getString(o.getColumnIndex("desCuenta")));
-		Log.d("Pulsado item: ", String.valueOf(position));
-		// Mostramos la informacion del ingreso en buen detalle.
-		Dialog d = new Dialog(getActivity());
-		d.setContentView(R.layout.dialog_informacion_gasto_ingreso);
-		d.setTitle("Informacion del Ingreso");
-		// Necesitamos la informacion de esta lista
-		TextView t = (TextView) d.findViewById(R.id.textViewInformes);
-
-		List<GastoIngreso> values = datasource
-			.darTodosLosGastoIngreso();
-		ArrayList<GastoIngreso> arregloG = new ArrayList<GastoIngreso>();
-
-		arregloG = sacarElementosDeUsuarioIngresos(values);
-
-		ArrayList<GastoIngreso> tmp = sacarElementosDeUsuarioIngresos(values);
-		GastoIngreso ingreso = tmp.get(position);
-		t.setText("Estamos funcionando");
-		System.out.println(t.getText());
-		// Log.d("Metodo activado nuevamente: ","pulsado");
-		d.show();
-	    }
-	});
-
-	rootView.findViewById(R.id.botonNuevoIngreso).setOnClickListener(
-		new View.OnClickListener()
-		{
-		    @Override
-		    public void onClick(View view)
-		    {
-			Intent intent = new Intent(getActivity(),
-				Registro_NuevoGastoIngreso.class);
-			intent.putExtra("key", user_id);
-			intent.putExtra("GastoIngreso", "ingreso");
-			startActivity(intent);
-			System.out
-				.println("el boton nuevo ingreso funciona correctamente");
-		    }
-		});
-
-	return rootView;
-    }
-
-    @Override
-    public void onResume()
-    {
-	// TODO Auto-generated method stub
-	super.onResume();
-	datasource = new UsersDataSource(getActivity());
-	datasource.open();
-
-	if (savedInstanceState != null)
-	{
-	    this.savedInstanceState = savedInstanceState;
-	    savedInstanceState.putInt("userKey", (int) idStatico);
-	    idStatico = savedInstanceState.getInt("userKey");
-	}
-	if (savedInstanceState == null)
-	{
-	    idStatico = darUserID(user_id);
-	}
-
-	// use the SimpleCursorAdapter to show the
-	// elements in a ListView
 	final List<GastoIngreso> values = datasource.darTodosLosGastoIngreso();
 	ArrayList<GastoIngreso> arregloG = new ArrayList<GastoIngreso>();
 
 	arregloG = sacarElementosDeUsuarioIngresos(values);
+
 	ArrayAdapter<GastoIngreso> adapter = new ArrayAdapter<GastoIngreso>(
 		getActivity(), android.R.layout.simple_list_item_1, arregloG);
 	lista.setAdapter(adapter);
@@ -184,7 +105,27 @@ public class IngresoSectionFragment extends Fragment
 	    }
 	});
 
+
+	rootView.findViewById(R.id.botonNuevoIngreso).setOnClickListener(
+		new View.OnClickListener()
+		{
+		    @Override
+		    public void onClick(View view)
+		    {
+			Intent intent = new Intent(getActivity(),
+				Registro_NuevoGastoIngreso.class);
+			intent.putExtra("key", user_id);
+			intent.putExtra("GastoIngreso", "ingreso");
+			startActivity(intent);
+			System.out
+				.println("el boton nuevo ingreso funciona correctamente");
+		    }
+		});
+
+	return rootView;
     }
+
+
 
     public ArrayList<GastoIngreso> sacarElementosDeUsuarioIngresos(
 	    List<GastoIngreso> lista)
@@ -227,12 +168,5 @@ public class IngresoSectionFragment extends Fragment
 	return user_id = userKey;
     }
 
-    @Override
-    public void onDestroy()
-    {
-	// TODO Auto-generated method stub
-	super.onDestroy();
-
-    }
 
 }
