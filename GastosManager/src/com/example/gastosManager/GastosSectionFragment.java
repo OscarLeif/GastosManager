@@ -86,6 +86,8 @@ public class GastosSectionFragment extends Fragment
 	super.onActivityCreated(savedInstanceState);
     }
 
+    
+    
     @Override
     public void onResume()
     {
@@ -93,6 +95,17 @@ public class GastosSectionFragment extends Fragment
 	super.onResume();
 	datasource = new UsersDataSource(getActivity());
 	datasource.open();
+ 
+	if (savedInstanceState != null)
+	{
+	    this.savedInstanceState = savedInstanceState;
+	    savedInstanceState.putInt("userKey", (int) idStatico);
+	    idStatico = savedInstanceState.getInt("userKey");
+	}
+	if (savedInstanceState == null && user_id != 0)
+	{
+	    idStatico = darUserID(user_id);
+	}
 
 	// use the SimpleCursorAdapter to show the
 	// elements in a ListView
@@ -103,10 +116,11 @@ public class GastosSectionFragment extends Fragment
 	ArrayAdapter<GastoIngreso> adapter = new ArrayAdapter<GastoIngreso>(
 		getActivity(), android.R.layout.simple_list_item_1, arregloG);
 	lista.setAdapter(adapter);
+
 	lista.setOnItemClickListener(new AdapterView.OnItemClickListener()
 	{
 	    public void onItemClick(AdapterView<?> arg0, View arg1,
-		    int position, long arg3)
+	    int position, long arg3)
 	    {
 
 		// Cursor o =(Cursor) lista.getItemAtPosition(position);
@@ -115,29 +129,30 @@ public class GastosSectionFragment extends Fragment
 		// Mostramos la informacion del ingreso en buen detalle.
 		Dialog d = new Dialog(getActivity());
 		d.setContentView(R.layout.dialog_informacion_gasto_ingreso);
-		d.setTitle("Informacion del Gasto");
+		d.setTitle("Informacion del Ingreso");
 
 		// Necesitamos la informacion de esta lista
-		TextView t = (TextView) d.findViewById(R.id.textViewDIngresoGasto);
+		TextView t = (TextView) d
+			.findViewById(R.id.textViewDIngresoGasto);
 		t.setText("Ingreso:");
 		TextView t1 = (TextView) d.findViewById(R.id.textViewDConcepto);
 		TextView t2 = (TextView) d.findViewById(R.id.textViewDValor);
 		TextView t3 = (TextView) d.findViewById(R.id.textViewDFecha);
 
 		ArrayList<GastoIngreso> tmp = sacarElementosDeUsuarioIngresos(values);
-		GastoIngreso gasto = tmp.get(position);
+		GastoIngreso ingreso = tmp.get(position);
 
-		t1.setText(gasto.getConcepto());
-		t2.setText(String.valueOf(gasto.getValor()));
-		String fecha = gasto.getFecha().replace("00:00:00", "");
+		t1.setText(ingreso.getConcepto());
+		t2.setText(String.valueOf(ingreso.getValor()));
+		String fecha = ingreso.getFecha().replace("00:00:00", "");
 		t3.setText(fecha);
-		
 
 		System.out.println(t.getText());
 		// Log.d("Metodo activado nuevamente: ","pulsado");
 		d.show();
 	    }
 	});
+
     }
 
     public long darUserID(long userKey)
