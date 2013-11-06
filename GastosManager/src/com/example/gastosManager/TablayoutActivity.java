@@ -19,7 +19,6 @@ public class TablayoutActivity extends FragmentActivity implements
 	private int position;
 	ViewPager mViewPager;
 	AppSectionsPagerAdapter mAppSectionsPagerAdapter;
-
 	@SuppressLint("NewApi")
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
@@ -110,6 +109,8 @@ public class TablayoutActivity extends FragmentActivity implements
 		// TODO Auto-generated method stub
 
 	}
+	
+
 	
 	@Override
 	public void onBackPressed() {

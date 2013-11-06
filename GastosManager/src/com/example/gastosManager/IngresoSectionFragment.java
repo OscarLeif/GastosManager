@@ -49,7 +49,7 @@ public class IngresoSectionFragment extends Fragment
 	    savedInstanceState.putInt("userKey", (int) idStatico);
 	    idStatico = savedInstanceState.getInt("userKey");
 	}
-	if (savedInstanceState == null)
+	if (savedInstanceState == null && user_id != 0)
 	{
 	    idStatico = darUserID(user_id);
 	}
@@ -117,15 +117,12 @@ public class IngresoSectionFragment extends Fragment
 			intent.putExtra("key", user_id);
 			intent.putExtra("GastoIngreso", "ingreso");
 			startActivity(intent);
-			System.out
-				.println("el boton nuevo ingreso funciona correctamente");
+			System.out.println("el boton nuevo ingreso funciona correctamente");
 		    }
 		});
 
 	return rootView;
     }
-
-
 
     public ArrayList<GastoIngreso> sacarElementosDeUsuarioIngresos(
 	    List<GastoIngreso> lista)
@@ -161,6 +158,80 @@ public class IngresoSectionFragment extends Fragment
 	}
 	return tmp;
     }
+    
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState)
+    {
+	// TODO Auto-generated method stub
+	super.onActivityCreated(savedInstanceState);
+    }
+    
+       @Override
+        public void onResume()
+        {
+    	// TODO Auto-generated method stub
+    	super.onResume();
+    	datasource = new UsersDataSource(getActivity());
+    	datasource.open();
+     
+    	if (savedInstanceState != null)
+    	{
+    	    this.savedInstanceState = savedInstanceState;
+    	    savedInstanceState.putInt("userKey", (int) idStatico);
+    	    idStatico = savedInstanceState.getInt("userKey");
+    	}
+    	if (savedInstanceState == null)
+    	{
+    	    idStatico = darUserID(user_id);
+    	}
+    
+    	// use the SimpleCursorAdapter to show the
+    	// elements in a ListView
+    	final List<GastoIngreso> values = datasource.darTodosLosGastoIngreso();
+    	ArrayList<GastoIngreso> arregloG = new ArrayList<GastoIngreso>();
+    
+    	arregloG = sacarElementosDeUsuarioIngresos(values);
+    	ArrayAdapter<GastoIngreso> adapter = new ArrayAdapter<GastoIngreso>(
+    		getActivity(), android.R.layout.simple_list_item_1, arregloG);
+    	lista.setAdapter(adapter);
+    
+    	lista.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    	{
+    	    public void onItemClick(AdapterView<?> arg0, View arg1,
+    	    int position, long arg3)
+    	    {
+    
+    		// Cursor o =(Cursor) lista.getItemAtPosition(position);
+    		// cargaGestionCuenta(o.getString(o.getColumnIndex("_id")),o.getString(o.getColumnIndex("desCuenta")));
+    		Log.d("Pulsado item: ", String.valueOf(position));
+    		// Mostramos la informacion del ingreso en buen detalle.
+    		Dialog d = new Dialog(getActivity());
+    		d.setContentView(R.layout.dialog_informacion_gasto_ingreso);
+    		d.setTitle("Informacion del Ingreso");
+    
+    		// Necesitamos la informacion de esta lista
+    		TextView t = (TextView) d
+    			.findViewById(R.id.textViewDIngresoGasto);
+    		t.setText("Ingreso:");
+    		TextView t1 = (TextView) d.findViewById(R.id.textViewDConcepto);
+    		TextView t2 = (TextView) d.findViewById(R.id.textViewDValor);
+    		TextView t3 = (TextView) d.findViewById(R.id.textViewDFecha);
+    
+    		ArrayList<GastoIngreso> tmp = sacarElementosDeUsuarioIngresos(values);
+    		GastoIngreso ingreso = tmp.get(position);
+    
+    		t1.setText(ingreso.getConcepto());
+    		t2.setText(String.valueOf(ingreso.getValor()));
+    		String fecha = ingreso.getFecha().replace("00:00:00", "");
+    		t3.setText(fecha);
+    
+    		System.out.println(t.getText());
+    		// Log.d("Metodo activado nuevamente: ","pulsado");
+    		d.show();
+    	    }
+    	});
+    
+        }
 
     public long darUserID(long userKey)
     {

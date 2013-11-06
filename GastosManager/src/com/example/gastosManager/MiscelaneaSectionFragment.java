@@ -38,7 +38,7 @@ public class MiscelaneaSectionFragment extends Fragment {
 		    savedInstanceState.putInt("userKey", (int) idStatico);
 		    idStatico = savedInstanceState.getInt("userKey");
 		}
-		if (savedInstanceState == null)
+		if (savedInstanceState == null && user_id != 0)
 		{
 		    idStatico = darUserID(user_id);
 		}

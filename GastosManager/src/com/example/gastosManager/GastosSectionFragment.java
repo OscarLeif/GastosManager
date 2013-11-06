@@ -35,7 +35,7 @@ public class GastosSectionFragment extends Fragment
 	View rootView = inflater.inflate(R.layout.fragment_section_gastos,
 		container, false);
 
-	if (savedInstanceState != null)
+	if (savedInstanceState != null && user_id != 0)
 	{
 	    this.savedInstanceState = savedInstanceState;
 	    savedInstanceState.putInt("userKey", (int) idStatico);
