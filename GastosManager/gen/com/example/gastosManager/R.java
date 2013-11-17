@@ -35,12 +35,12 @@ public final class R {
         public static final int user_icon=0x7f020003;
     }
     public static final class id {
-        public static final int AcercaDeGM=0x7f090031;
+        public static final int AcercaDeGM=0x7f090032;
         public static final int DatePickerFinal=0x7f090015;
         public static final int FechaNacimiento=0x7f090009;
         public static final int TextView01=0x7f090014;
-        public static final int action_settings=0x7f09002c;
-        public static final int borrarActual=0x7f090030;
+        public static final int action_settings=0x7f09002d;
+        public static final int borrarActual=0x7f090031;
         public static final int botonAgregar=0x7f090029;
         public static final int botonAgregarUsuario=0x7f09000a;
         public static final int botonCancelar=0x7f09002a;
@@ -62,15 +62,16 @@ public final class R {
         public static final int icon=0x7f09002b;
         public static final int imageView1=0x7f09001b;
         public static final int include1=0x7f090025;
-        public static final int item1=0x7f09002d;
-        public static final int item2=0x7f09002e;
+        public static final int item1=0x7f09002e;
+        public static final int item2=0x7f09002f;
         public static final int labelInforme=0x7f090021;
+        public static final int labelInformeID=0x7f09002c;
         public static final int linearLayout1=0x7f090003;
         public static final int linearLayout2=0x7f09001a;
         public static final int linearLayout3=0x7f090010;
         public static final int listaInformes=0x7f090002;
         public static final int lista_miscelanea=0x7f090024;
-        public static final int menuAgregar=0x7f09002f;
+        public static final int menuAgregar=0x7f090030;
         public static final int pager=0x7f090017;
         public static final int relativeLayout1=0x7f09001c;
         public static final int textTitulo=0x7f090026;
@@ -87,7 +88,7 @@ public final class R {
         public static final int txtSubCabecera=0x7f09001d;
     }
     public static final class layout {
-        public static final int acerca_de_insos=0x7f030000;
+        public static final int acerca_de_gm=0x7f030000;
         public static final int activity_collection_demo=0x7f030001;
         public static final int activity_informes_gastos_ingresos=0x7f030002;
         public static final int activity_register=0x7f030003;

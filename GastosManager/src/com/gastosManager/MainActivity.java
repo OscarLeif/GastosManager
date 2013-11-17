@@ -47,7 +47,7 @@ public class MainActivity extends Activity
 	lista.setAdapter(adapter);
 	// use the SimpleCursorAdapter to show the
 	// elements in a ListView
-	
+
 	lista.setOnItemLongClickListener(new OnItemLongClickListener()
 	{
 
@@ -62,21 +62,19 @@ public class MainActivity extends Activity
 		return false;
 	    }
 	});
-	
-	
 
     }
-    
+
     @SuppressLint("NewApi")
-    public void showPopup(View v) {
-	    PopupMenu popup = new PopupMenu(this, v);
-	    MenuInflater inflater = popup.getMenuInflater();
-	    inflater.inflate(R.menu.context_menu, popup.getMenu());
-	    popup.show();
-	}
-/**
- * Desafortunamente aqui es donde se crea el evento del listView
- */
+    public void showPopup(View v)
+    {
+	PopupMenu popup = new PopupMenu(this, v);
+	MenuInflater inflater = popup.getMenuInflater();
+	inflater.inflate(R.menu.context_menu, popup.getMenu());
+	popup.show();
+    }
+
+
     @Override
     protected void onResume()
     {
@@ -88,7 +86,7 @@ public class MainActivity extends Activity
 	// elements in a ListView
 	List<Usuario> values = datasource.darTodosLosUsuario();
 	ArrayAdapter<Usuario> adapter = new ArrayAdapter<Usuario>(this,
-		R.layout.rowlayout,R.id.labelInforme, values);
+		R.layout.rowlayout, R.id.labelInforme , values);
 	lista.setAdapter(adapter);
 	lista.setOnItemClickListener(new AdapterView.OnItemClickListener()
 	{
@@ -97,14 +95,13 @@ public class MainActivity extends Activity
 		    int position, long arg3)
 	    {
 
-		//Cursor o = (Cursor) lista.getItemAtPosition(position);
+		// Cursor o = (Cursor) lista.getItemAtPosition(position);
 		// cargaGestionCuenta(o.getString(o.getColumnIndex("_id")),o.getString(o.getColumnIndex("desCuenta")));
 		List<Usuario> listaUsuarios = datasource.darTodosLosUsuario();
 		Usuario tmp = listaUsuarios.get(position);
 		int user_ID = (int) tmp.getId();
 		crearNuevaActividadUsuario(arg0, user_ID);
-		Log.d("Usuario ID: ", Integer.toString(user_ID) );
-		
+		Log.d("Usuario ID: ", Integer.toString(user_ID));
 
 	    }
 	});
@@ -188,8 +185,8 @@ public class MainActivity extends Activity
 		break;
 	case R.id.AcercaDeGM:
 	    Dialog d = new Dialog(MainActivity.this);
-	    d.setContentView(R.layout.acerca_de_insos);
-	    d.setTitle("Acerca de Insos");
+	    d.setContentView(R.layout.acerca_de_gm);
+	    d.setTitle("Acerca de Gastos Manager");
 	    d.show();
 	    break;
 
@@ -211,15 +208,15 @@ public class MainActivity extends Activity
 	{
 	    datasource.open();
 	    Intent i = new Intent(this, TablayoutActivity.class);
-//	    String posicionString = Integer.toString(posicionListView);
-	    //List<Usuario> listaUsuarios = datasource.darTodosLosUsuario();
-		//Usuario tmp = listaUsuarios.get(user_ID);
-		//int user_ID1 = (int) tmp.getId();
+	    // String posicionString = Integer.toString(posicionListView);
+	    // List<Usuario> listaUsuarios = datasource.darTodosLosUsuario();
+	    // Usuario tmp = listaUsuarios.get(user_ID);
+	    // int user_ID1 = (int) tmp.getId();
 	    String position = Integer.toString(user_ID);
 	    i.putExtra("Position", position);
 	    datasource.close();
 	    startActivity(i);
-	    
+
 	}
 	if (user_ID <= -1)
 	{
@@ -227,6 +224,5 @@ public class MainActivity extends Activity
 		    .println("El indice es negativo seguro, no hay elementos en la base de datos.");
 	}
     }
-
 
 }

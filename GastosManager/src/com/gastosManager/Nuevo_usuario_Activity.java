@@ -58,7 +58,7 @@ public class Nuevo_usuario_Activity extends Activity
 		// Aqui debe haber validacion de datos.
 		EditText edt = (EditText) findViewById(R.id.editTextConcepto);
 		String nombre = edt.getText().toString();
-		if(!nombre.equals("") && !existeUsuario(nombre) )
+		if(!nombre.equals("")  )//&& !existeUsuario(nombre)
 		{
 		datasource.open();
 		datasource.agregarUsuario(nombre);
